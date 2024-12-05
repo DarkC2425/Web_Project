@@ -49,7 +49,6 @@ public class StoreDaoImpl implements IStoreDao {
 			ps.setBoolean(5, store.getIsActive());
 			ps.setString(6, store.getAvatar());
 			ps.setFloat(7, store.getRating());
-			ps.setDate(8, store.getCreatedAt());
 			ps.setDate(9, store.getUpdatedAt());
 			ps.setInt(10, store.getSID());
 			ps.executeUpdate();

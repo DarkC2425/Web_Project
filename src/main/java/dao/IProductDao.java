@@ -17,4 +17,8 @@ public interface IProductDao {
 	Product findByPID(int UID);
 
 	List<Product> findByName(String name);
+	
+	List<Product> listBySID(int storeID);
+	
+	List<Product> listAll();
 }

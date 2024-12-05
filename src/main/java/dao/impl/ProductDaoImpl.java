@@ -14,9 +14,10 @@ public class ProductDaoImpl implements IProductDao {
 	public Connection conn = null;
 	public PreparedStatement ps = null;
 	public ResultSet rs = null;
+
 	@Override
 	public void insert(Product product) {
-		
+
 		String sql = "INSERT INTO Products (name, description, isActive, listImages, categoryID, rating, storeID, createdAt, updatedAt, price) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		try {
 			conn = new DBConnectSQL().getConnection();
@@ -35,7 +36,7 @@ public class ProductDaoImpl implements IProductDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -58,7 +59,7 @@ public class ProductDaoImpl implements IProductDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -69,10 +70,10 @@ public class ProductDaoImpl implements IProductDao {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, PID);
 			ps.executeUpdate();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -83,8 +84,7 @@ public class ProductDaoImpl implements IProductDao {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, UID);
 			rs = ps.executeQuery();
-			while(rs.next())
-			{
+			while (rs.next()) {
 				Product product = new Product();
 				product.setPID(rs.getInt("PID"));
 				product.setName(rs.getString("name"));
@@ -114,8 +114,68 @@ public class ProductDaoImpl implements IProductDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, name);
 			rs = ps.executeQuery();
-			while(rs.next())
-			{
+			while (rs.next()) {
+				Product product = new Product();
+				product.setPID(rs.getInt("PID"));
+				product.setName(rs.getString("name"));
+				product.setDescription(rs.getString("description"));
+				product.setActive(rs.getBoolean("isActive"));
+				product.setListImages(rs.getString("listImages"));
+				product.setCategoryID(rs.getInt("categoryID"));
+				product.setRating(rs.getFloat("rating"));
+				product.setStoreID(rs.getInt("storeID"));
+				product.setCreatedAt(rs.getDate("createdAt"));
+				product.setUpdatedAt(rs.getDate("updatedAt"));
+				product.setPrice(rs.getInt("price"));
+				products.add(product);
+			}
+			return products;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Product> listAll() {
+		String sql = "SELECT * FROM Products";
+		try {
+			List<Product> products = new ArrayList<Product>();
+			conn = new DBConnectSQL().getConnection();
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Product product = new Product();
+				product.setPID(rs.getInt("PID"));
+				product.setName(rs.getString("name"));
+				product.setDescription(rs.getString("description"));
+				product.setActive(rs.getBoolean("isActive"));
+				product.setListImages(rs.getString("listImages"));
+				product.setCategoryID(rs.getInt("categoryID"));
+				product.setRating(rs.getFloat("rating"));
+				product.setStoreID(rs.getInt("storeID"));
+				product.setCreatedAt(rs.getDate("createdAt"));
+				product.setUpdatedAt(rs.getDate("updatedAt"));
+				product.setPrice(rs.getInt("price"));
+				products.add(product);
+			}
+			return products;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Product> listBySID(int storeID) {
+		String sql = "SELECT * FROM Products WHERE storeID=?";
+		try {
+			List<Product> products = new ArrayList<Product>();
+			conn = new DBConnectSQL().getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, storeID);
+			rs = ps.executeQuery();
+			while (rs.next()) {
 				Product product = new Product();
 				product.setPID(rs.getInt("PID"));
 				product.setName(rs.getString("name"));
