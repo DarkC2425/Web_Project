@@ -9,12 +9,12 @@ import java.util.List;
 import configs.DBConnectSQL;
 import dao.ICategoryDao;
 import models.Category;
-import models.Store;
 
-public class CategoryDaoImpl implements ICategoryDao{
+public class CategoryDaoImpl implements ICategoryDao {
 	public Connection conn = null;
 	public PreparedStatement ps = null;
 	public ResultSet rs = null;
+
 	@Override
 	public void insert(Category category) {
 		String sql = "INSERT INTO Categories (name, image, createdAt, updatedAt) VALUES (?,?,?,?)";
@@ -29,7 +29,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -71,8 +71,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, CID);
 			rs = ps.executeQuery();
-			while(rs.next())
-			{
+			while (rs.next()) {
 				Category category = new Category();
 				category.setCID(rs.getInt("CID"));
 				category.setName(rs.getString("name"));
@@ -96,8 +95,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 			ps.setString(1, name);
 			rs = ps.executeQuery();
 			List<Category> categories = new ArrayList<Category>();
-			while(rs.next())
-			{
+			while (rs.next()) {
 				Category category = new Category();
 				category.setCID(rs.getInt("CID"));
 				category.setName(rs.getString("name"));
@@ -121,8 +119,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			List<Category> categories = new ArrayList<Category>();
-			while(rs.next())
-			{
+			while (rs.next()) {
 				Category category = new Category();
 				category.setCID(rs.getInt("CID"));
 				category.setName(rs.getString("name"));
