@@ -14,7 +14,7 @@ public interface IProductDao {
 	void delete(int PID);
 
 	// ---Cac ham read---
-	List<Product> findByPID(int UID);
+	Product findByPID(int UID);
 
 	List<Product> findByName(String name);
 }

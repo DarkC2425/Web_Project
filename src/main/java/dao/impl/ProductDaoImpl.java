@@ -63,7 +63,7 @@ public class ProductDaoImpl implements IProductDao {
 
 	@Override
 	public void delete(int PID) {
-		String sql = "DELETE Products Where PID=?";
+		String sql = "DELETE Products WHERE PID=?";
 		try {
 			conn = new DBConnectSQL().getConnection();
 			ps = conn.prepareStatement(sql);
@@ -76,10 +76,9 @@ public class ProductDaoImpl implements IProductDao {
 	}
 
 	@Override
-	public List<Product> findByPID(int UID) {
+	public Product findByPID(int UID) {
 		String sql = "SELECT * FROM Products WHERE UID=?";
 		try {
-			List<Product> products = new ArrayList<Product>();
 			conn = new DBConnectSQL().getConnection();
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, UID);
@@ -98,9 +97,8 @@ public class ProductDaoImpl implements IProductDao {
 				product.setCreatedAt(rs.getDate("createdAt"));
 				product.setUpdatedAt(rs.getDate("updatedAt"));
 				product.setPrice(rs.getInt("price"));
-				products.add(product);
+				return product;
 			}
-			return products;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
