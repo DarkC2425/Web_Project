@@ -130,7 +130,7 @@ public class UserDaoImpl implements IUserDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

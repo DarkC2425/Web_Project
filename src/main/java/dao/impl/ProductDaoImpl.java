@@ -41,7 +41,7 @@ public class ProductDaoImpl implements IProductDao {
 
 	@Override
 	public void update(Product product) {
-		String sql = "UPDATE Products name=?, description=?, isActive=?, listImages=?, categoryID=?, rating=?, storeID=?, updatedAt=?, price=? WHERE PID=?";
+		String sql = "UPDATE Products SET name=?, description=?, isActive=?, listImages=?, categoryID=?, rating=?, storeID=?, updatedAt=?, price=? WHERE PID=?";
 		try {
 			conn = new DBConnectSQL().getConnection();
 			ps = conn.prepareStatement(sql);
@@ -167,7 +167,7 @@ public class ProductDaoImpl implements IProductDao {
 	}
 
 	@Override
-	public List<Product> listBySID(int storeID) {
+	public List<Product> listByStoreID(int storeID) {
 		String sql = "SELECT * FROM Products WHERE storeID=?";
 		try {
 			List<Product> products = new ArrayList<Product>();

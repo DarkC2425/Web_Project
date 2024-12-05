@@ -17,7 +17,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 	public ResultSet rs = null;
 	@Override
 	public void insert(Category category) {
-		String sql = "INSERT INTO Category (name, image, createdAt, updatedAt) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO Categories (name, image, createdAt, updatedAt) VALUES (?,?,?,?)";
 		try {
 			conn = new DBConnectSQL().getConnection();
 			ps = conn.prepareStatement(sql);
@@ -34,14 +34,14 @@ public class CategoryDaoImpl implements ICategoryDao{
 
 	@Override
 	public void update(Category category) {
-		String sql = "UPDATE Category name=?, image=?, createdAt=?, updatedAt=? WHERE CID=?";
+		String sql = "UPDATE Categories SET name=?, image=?, updatedAt=? WHERE CID=?";
 		try {
 			conn = new DBConnectSQL().getConnection();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, category.getName());
 			ps.setString(2, category.getImage());
-			ps.setDate(3, category.getCreatedAt());
-			ps.setDate(4, category.getUpdatedAt());
+			ps.setDate(3, category.getUpdatedAt());
+			ps.setInt(4, category.getCID());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,7 +51,7 @@ public class CategoryDaoImpl implements ICategoryDao{
 
 	@Override
 	public void delete(int CID) {
-		String sql = "DELETE Category WHERE CID=?";
+		String sql = "DELETE Categories WHERE CID=?";
 		try {
 			conn = new DBConnectSQL().getConnection();
 			ps = conn.prepareStatement(sql);

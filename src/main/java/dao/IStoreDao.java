@@ -15,7 +15,7 @@ public interface IStoreDao {
 	void delete(int SID);
 
 	// ---Cac ham read---
-	Store findBySID(int PID);
+	Store findBySID(int SID);
 
 	List<Store> findByName(String name);
 }

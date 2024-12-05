@@ -18,7 +18,7 @@ public interface IProductDao {
 
 	List<Product> findByName(String name);
 	
-	List<Product> listBySID(int storeID);
+	List<Product> listByStoreID(int storeID);
 	
 	List<Product> listAll();
 }

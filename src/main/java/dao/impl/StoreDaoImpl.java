@@ -14,6 +14,7 @@ public class StoreDaoImpl implements IStoreDao {
 	public Connection conn = null;
 	public PreparedStatement ps = null;
 	public ResultSet rs = null;
+
 	@Override
 	public void insert(Store store) {
 		String sql = "INSERT INTO Stores (name, email, phone, ownerID, isActive, avatar, rating, createdAt, updatedAt) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -33,12 +34,12 @@ public class StoreDaoImpl implements IStoreDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
 	public void update(Store store) {
-		String sql = "UPDATE Stores name=?, email=?, phone=?, ownerID=?, isActive=?, avatar=?, rating=?, createdAt=?, updatedAt=?) WHERE SID=?";
+		String sql = "UPDATE Stores SET name=?, email=?, phone=?, ownerID=?, isActive=?, avatar=?, rating=?, updatedAt=? WHERE SID=?";
 		try {
 			conn = new DBConnectSQL().getConnection();
 			ps = conn.prepareStatement(sql);
@@ -55,7 +56,7 @@ public class StoreDaoImpl implements IStoreDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -72,15 +73,14 @@ public class StoreDaoImpl implements IStoreDao {
 	}
 
 	@Override
-	public Store findBySID(int PID) {
-		String sql = "SELECT * FROM Stores WHERE PID=?";
+	public Store findBySID(int SID) {
+		String sql = "SELECT * FROM Stores WHERE SID=?";
 		try {
 			conn = new DBConnectSQL().getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, PID);
+			ps.setInt(1, SID);
 			rs = ps.executeQuery();
-			while(rs.next())
-			{
+			while (rs.next()) {
 				Store store = new Store();
 				store.setSID(rs.getInt("SID"));
 				store.setName(rs.getString("name"));
@@ -109,8 +109,7 @@ public class StoreDaoImpl implements IStoreDao {
 			ps.setString(1, name);
 			rs = ps.executeQuery();
 			List<Store> stores = new ArrayList<Store>();
-			while(rs.next())
-			{
+			while (rs.next()) {
 				Store store = new Store();
 				store.setSID(rs.getInt("SID"));
 				store.setName(rs.getString("name"));
