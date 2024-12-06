@@ -1,13 +1,23 @@
 package services;
 
-import models.User;
+import java.util.List;
+
+import models.Stock;
 
 public interface IStockService {
-	public void register(String firstName, String lastName, String email, String phone, String password, String address,
-			String role);
+	void insert(Stock stock);
 
-	public User login(String email, String password);
+	// Update dua tren cot SID
+	void update(Stock stock);
 
-	public User findByUID(int UID);
+	// Xoa product dua tren cot SID
+	void delete(int StockID);
+
+	// ---Cac ham read---
+	Stock findByStockID(int StockID);
+
+	List<Stock> findByPID(int PID);
+
+	List<Stock> listAll();
 
 }

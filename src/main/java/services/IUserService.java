@@ -9,5 +9,11 @@ public interface IUserService {
 	public User login(String email, String password);
 
 	public User findByUID(int UID);
+	
+	//Chi update first/last name, phone, avatar, khong update cac cot khac
+	void update(User user);
+	
+	//Xoa user dua tren UID
+	void delete(int UID);
 
 }

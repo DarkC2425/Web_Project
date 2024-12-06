@@ -1,13 +1,20 @@
 package services;
 
-import models.User;
+import java.util.List;
+
+import models.Store;
 
 public interface IStoreService {
-	public void register(String firstName, String lastName, String email, String phone, String password, String address,
-			String role);
+	void insert(Store store);
 
-	public User login(String email, String password);
+	// khong update cot SID
+	void update(Store store);
 
-	public User findByUID(int UID);
+	// Xoa product dua tren cot SID
+	void delete(int SID);
 
+	// ---Cac ham read---
+	Store findBySID(int SID);
+
+	List<Store> findByName(String name);
 }

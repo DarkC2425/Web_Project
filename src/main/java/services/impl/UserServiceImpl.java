@@ -36,4 +36,14 @@ public class UserServiceImpl implements IUserService {
 		return null;
 	}
 
+	@Override
+	public void update(User user) {
+		iUserDao.update(user);
+	}
+
+	@Override
+	public void delete(int UID) {
+		iUserDao.delete(UID);
+	}
+
 }
