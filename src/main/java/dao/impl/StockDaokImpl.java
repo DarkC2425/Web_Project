@@ -8,7 +8,6 @@ import java.util.List;
 
 import configs.DBConnectSQL;
 import dao.IStockDao;
-import models.Category;
 import models.Stock;
 
 public class StockDaokImpl implements IStockDao {

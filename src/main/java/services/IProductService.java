@@ -1,10 +1,10 @@
-package dao;
+package services;
 
 import java.util.List;
 
 import models.Product;
 
-public interface IProductDao {
+public interface IProductService {
 	void insert(Product product);
 
 	// khong update cot PID

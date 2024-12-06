@@ -167,7 +167,7 @@ public class ProductDaoImpl implements IProductDao {
 	}
 
 	@Override
-	public List<Product> listByStoreID(int storeID) {
+	public List<Product> findByStoreID(int storeID) {
 		String sql = "SELECT * FROM Products WHERE storeID=?";
 		try {
 			List<Product> products = new ArrayList<Product>();
