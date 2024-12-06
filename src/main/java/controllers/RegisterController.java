@@ -54,6 +54,7 @@ public class RegisterController extends HttpServlet {
 		IUserService service = new UserServiceImpl();
 		String alertMsg = "";
 		service.register(fname, lname, email, phone, password, addr, role);
+		response.sendRedirect(request.getContextPath() + "/login");
 	}
 
 }

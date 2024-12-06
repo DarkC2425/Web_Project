@@ -1,6 +1,11 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.UUID;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -20,7 +25,7 @@ import services.impl.UserServiceImpl;
 @WebServlet(urlPatterns = "/login")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String SESSION_USERNAME = "email";
+	public static final String SESSION_EMAIL = "email";
 	public static final String COOKIE_REMEMBER = "email";
 
 	/**
@@ -38,7 +43,7 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/login.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(utils.Constants.LOGIN);
 		requestDispatcher.forward(request, response);
 	}
 
@@ -70,6 +75,19 @@ public class LoginController extends HttpServlet {
 		IUserService service = new UserServiceImpl();
 		User user = service.login(email, password);
 		if (user != null) {
+			Algorithm algorithm = Algorithm.HMAC256("HCMUTE");
+
+			String jwt = JWT.create().withIssuer("your-issuer").withSubject(user.getEmail())
+					.withAudience("your-audience").withClaim("role", user.getRole()).withIssuedAt(new Date())
+					.withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
+					.withNotBefore(new Date(System.currentTimeMillis() + 1000)).withJWTId(UUID.randomUUID().toString())
+					.sign(algorithm);
+			Cookie jwtCookie = new Cookie("jwt", jwt);
+			jwtCookie.setHttpOnly(true);
+			jwtCookie.setPath("/");
+			jwtCookie.setMaxAge(3600);
+
+			response.addCookie(jwtCookie);
 			HttpSession session = request.getSession(true);
 			session.setAttribute("account", user);
 			if (isRememberMe) {

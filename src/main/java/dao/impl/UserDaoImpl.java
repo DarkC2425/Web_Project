@@ -99,4 +99,38 @@ public class UserDaoImpl implements IUserDao {
 		}
 	}
 
+	@Override
+	public void update(User user) {
+		String sql = "UPDATE Users SET firstName=?, lastName=?, phone=?, avatar=?, address=?, updatedAt=? WHERE UID=?";
+		try {
+			conn = new DBConnectSQL().getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getFirstName());
+			ps.setString(2, user.getLastName());
+			ps.setString(3, user.getPhone());
+			ps.setString(4, user.getAvatar());
+			ps.setString(5, user.getAddress());
+			ps.setDate(6, user.getUpdatedAt());
+			ps.setInt(7, user.getUID());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void delete(int UID) {
+		// TODO Auto-generated method stub
+		String sql = "DELETE FROM Users WHERE UID=?";
+		try {
+			conn = new DBConnectSQL().getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, UID);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }
