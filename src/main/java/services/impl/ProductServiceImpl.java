@@ -10,6 +10,7 @@ import services.IProductService;
 public class ProductServiceImpl implements IProductService {
 	IProductDao iProductDao = new ProductDaoImpl();
 
+	@Override
 	public List<Product> getProductsByPage(int page, int pageSize) {
 		List<Product> allProducts = iProductDao.listAll();
 		int fromIndex = (page - 1) * pageSize;

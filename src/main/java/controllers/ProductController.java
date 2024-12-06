@@ -47,11 +47,9 @@ public class ProductController extends HttpServlet {
 			List<Product> products = iProductService.getProductsByPage(page, utils.Constants.PAGE_SIZE);
 			int totalProducts = iProductService.getTotalProducts();
 			int totalPages = (int) Math.ceil((double) totalProducts / utils.Constants.PAGE_SIZE);
-
 			request.setAttribute("products", products);
 			request.setAttribute("currentPage", page);
 			request.setAttribute("totalPages", totalPages);
-
 			request.getRequestDispatcher("/views/product.jsp").forward(request, response);
 		}
 	}
