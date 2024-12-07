@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sitemesh>
-	<mapping path="/*" decorator="guest.jsp" />
-	<mapping path="/user/*" decorator="user.jsp" />
-	<mapping path="/admin/*" decorator="admin.jsp" />
-	<mapping path="/vl/api/*" exclude="true" />
-</sitemesh>
