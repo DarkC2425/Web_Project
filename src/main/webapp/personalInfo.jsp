@@ -1,5 +1,5 @@
-<%@page import="com.webshoes.beans.Message"%>
-<%@page import="com.webshoes.beans.User"%>
+<%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%
@@ -19,7 +19,7 @@ label {
 </style>
 <div class="container px-3 py-3">
 	<h3>Thông tin cá nhân</h3>
-	<form id="update-user" action="UpdateUserServlet" method="post">
+	<form id="update-user" action="UpdateUserController" method="post">
 		<input type="hidden" name="operation" value="updateUser">
 		<div class="row">
 			<div class="col-md-6 mt-2">

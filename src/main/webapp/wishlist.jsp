@@ -1,12 +1,12 @@
-<%@page import="com.webshoes.beans.Message"%>
-<%@page import="com.webshoes.beans.Product"%>
-<%@page import="com.webshoes.dao.ProductDao"%>
-<%@page import="com.webshoes.beans.Wishlist"%>
+<%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.model.Product"%>
+<%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
+<%@page import="com.shop.model.Wishlist"%>
 <%@page import="java.util.List"%>
 <%@page errorPage="error_exception.jsp"%>
-<%@page import="com.webshoes.beans.User"%>
-<%@page import="com.webshoes.helper.ConnectionProvider"%>
-<%@page import="com.webshoes.dao.WishlistDao"%>
+<%@page import="com.shop.model.User"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
+<%@page import="com.shop.dao.Impl.WishlistDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
@@ -18,9 +18,9 @@ if (u1 == null) {
 	response.sendRedirect("login.jsp");
 	return;  
 }
-WishlistDao wishListDao = new WishlistDao(ConnectionProvider.getConnection());
+WishlistDaoImpl wishListDao = new WishlistDaoImpl(DatabaseConnection.getConnection());
 List<Wishlist> wlist = wishListDao.getListByUserId(u1.getUserId());
-ProductDao pDao = new ProductDao(ConnectionProvider.getConnection());
+ProductDaoImpl pDao = new ProductDaoImpl(DatabaseConnection.getConnection());
 %>
 <div class="container px-3 py-3">
 	<%
@@ -51,7 +51,7 @@ ProductDao pDao = new ProductDao(ConnectionProvider.getConnection());
 				<td class="text-start"><%=p.getProductName()%></td>
 				<td><%=p.getProductPriceAfterDiscount()%>&#8363;</td>
 				<td><a
-					href="WishlistServlet?uid=<%=u1.getUserId()%>&pid=<%=p.getProductId()%>&op=delete"
+					href="WishlistController?uid=<%=u1.getUserId()%>&pid=<%=p.getProductId()%>&op=delete"
 					class="btn btn-secondary" role="button">Xóa bỏ</a></td>
 			</tr>
 			<%

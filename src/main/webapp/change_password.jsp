@@ -41,7 +41,7 @@ label {
 						<h3 class="text-center mt-3">Cập nhật mật khẩu</h3>
 						<%@include file="Components/alert_message.jsp"%>
 
-						<form action="ChangePasswordServlet" method="post">
+						<form action="ChangePasswordController" method="post">
 							<div class="mb-3 mt-3">
 								<label class="form-label">Mật khẩu mới</label> <input
 									type="password" name="password" id="password"

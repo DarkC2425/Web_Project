@@ -1,14 +1,14 @@
-<%@page import="com.webshoes.beans.Message"%>
-<%@page import="com.webshoes.dao.UserDao"%>
+<%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.dao.Impl.UserDaoImpl"%>
 <%@page errorPage="error_exception.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.webshoes.beans.OrderedProduct"%>
-<%@page import="com.webshoes.beans.Order"%>
+<%@page import="com.shop.model.OrderedProduct"%>
+<%@page import="com.shop.model.Order"%>
 <%@page import="java.util.List"%>
-<%@page import="com.webshoes.dao.OrderedProductDao"%>
-<%@page import="com.webshoes.dao.OrderDao"%>
-<%@page import="com.webshoes.helper.ConnectionProvider"%>
+<%@page import="com.shop.dao.Impl.OrderedProductDaoImpl"%>
+<%@page import="com.shop.dao.Impl.OrderDaoImpl"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
 
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
@@ -18,10 +18,10 @@ if (activeAdmin == null) {
 	response.sendRedirect("adminlogin.jsp");
 	return;
 }
-OrderDao orderDao = new OrderDao(ConnectionProvider.getConnection());
-OrderedProductDao ordProdDao = new OrderedProductDao(ConnectionProvider.getConnection());
+OrderDaoImpl orderDao = new OrderDaoImpl(DatabaseConnection.getConnection());
+OrderedProductDaoImpl ordProdDao = new OrderedProductDaoImpl(DatabaseConnection.getConnection());
 List<Order> orderList = orderDao.getAllOrder();
-UserDao userDao = new UserDao(ConnectionProvider.getConnection());
+UserDaoImpl userDao = new UserDaoImpl(DatabaseConnection.getConnection());
 %>
 <!DOCTYPE html>
 <html>
@@ -65,9 +65,8 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 					List<OrderedProduct> ordProdList = ordProdDao.getAllOrderedProduct(order.getId());
 					for (OrderedProduct orderProduct : ordProdList) {
 				%>
-				<form action="UpdateOrderServlet?oid=<%=order.getId()%>"
-					method="post">
-				<tr>
+				<form action="UpdateOrderController?oid=<%=order.getId()%>" method="post">
+			<tr>
 					<td class="text-center"><img
 						src="Product_imgs\<%=orderProduct.getImage()%>"
 						style="width: 50px; height: 50px; width: auto;"></td>

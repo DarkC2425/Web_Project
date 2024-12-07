@@ -1,18 +1,18 @@
-<%@page import="com.webshoes.beans.Admin"%>
-<%@page import="com.webshoes.beans.Cart"%>
-<%@page import="com.webshoes.dao.CartDao"%>
-<%@page import="com.webshoes.beans.User"%>
+<%@page import="com.shop.model.Admin"%>
+<%@page import="com.shop.model.Cart"%>
+<%@page import="com.shop.dao.Impl.CartDaoImpl"%>
+<%@page import="com.shop.model.User"%>
 <%@page import="java.util.List"%>
-<%@page import="com.webshoes.beans.Category"%>
-<%@page import="com.webshoes.helper.ConnectionProvider"%>
-<%@page import="com.webshoes.dao.CategoryDao"%>
+<%@page import="com.shop.model.Category"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
+<%@page import="com.shop.dao.Impl.CategoryDaoImpl"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-    User user = (User) session.getAttribute("activeUser");
+User user = (User) session.getAttribute("activeUser");
     Admin admin = (Admin) session.getAttribute("activeAdmin");
 
-    CategoryDao catDao = new CategoryDao(ConnectionProvider.getConnection());
+    CategoryDaoImpl catDao = new CategoryDaoImpl(DatabaseConnection.getConnection());
     List<Category> categoryList = catDao.getAllCategories();
 %>
 
@@ -82,7 +82,7 @@
 
     <!-- admin nav bar -->
     <%
-        if (admin != null) {
+    if (admin != null) {
     %>
     <div class="container">
         <a class="navbar-brand" href="admin.jsp"><i
@@ -138,12 +138,12 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="products.jsp?category=0">Tất cả sản phẩm</a></li>
                             <%
-                                for (Category c : categoryList) {
+                            for (Category c : categoryList) {
                             %>
                         <li><a class="dropdown-item"
                                href="products.jsp?category=<%=c.getCategoryId()%>"><%=c.getCategoryName()%></a></li>
                             <%
-                                }
+                            }
                             %>
                     </ul></li>
             </ul>
@@ -157,9 +157,9 @@
 
             <!-- when user is logged in -->
             <%
-                if (user != null) {
-                    CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
-                    int cartCount = cartDao.getCartCountByUserId(user.getUserId());
+            if (user != null) {
+                                            CartDaoImpl cartDao = new CartDaoImpl(DatabaseConnection.getConnection());
+                                            int cartCount = cartDao.getCartCountByUserId(user.getUserId());
             %>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active pe-3"><a

@@ -1,9 +1,9 @@
-<%@page import="com.webshoes.beans.Message"%>
+<%@page import="com.shop.model.Message"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@page errorPage="error_exception.jsp"%>
 <%
-    Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
+Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
     if (activeAdmin == null) {
         Message message = new Message("Bạn chưa đăng nhập! Đăng nhập trước!!", "error", "alert-danger");
         session.setAttribute("message", message);
@@ -133,7 +133,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                     </div>
-                    <form action="AddOperationServlet" method="post"
+                    <form action="AddOperationController" method="post"
                           enctype="multipart/form-data">
                         <div class="modal-body">
                             <input type="hidden" name="operation" value="addCategory">
@@ -169,7 +169,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                     </div>
-                    <form action="AddOperationServlet" method="post"
+                    <form action="AddOperationController" method="post"
                           name="addProductForm" enctype="multipart/form-data">
                         <div class="modal-body">
                             <input type="hidden" name="operation" value="addProduct">

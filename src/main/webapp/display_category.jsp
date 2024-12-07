@@ -1,4 +1,4 @@
-<%@page import="com.webshoes.beans.Message"%>
+<%@page import="com.shop.model.Message"%>
 <%@page errorPage="error_exception.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -39,7 +39,7 @@ if (activeAdmin == null) {
 					style="width: 60px; height: 60px; width: auto;"></td>
 				<td><%=c.getCategoryName()%></td>
 				<td><a href="update_category.jsp?cid=<%=c.getCategoryId()%>" role="button" class="btn btn-secondary">Cập nhật</a>&emsp;<a
-					href="AddOperationServlet?cid=<%=c.getCategoryId()%>&operation=deleteCategory"
+					href="AddOperationController?cid=<%=c.getCategoryId()%>&operation=deleteCategory"
 					class="btn btn-danger" role="button">Xóa</a></td>
 			</tr>
 			<%

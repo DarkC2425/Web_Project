@@ -1,5 +1,5 @@
-<%@page import="com.webshoes.beans.Message"%>
-<%@page import="com.webshoes.dao.UserDao"%>
+<%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.dao.Impl.UserDaoImpl"%>
 <%@page errorPage="error_exception.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -35,9 +35,9 @@ if (activeAdmin == null) {
 				<th>Action</th>
 			</tr>
 			<%
-			UserDao userDao = new UserDao(ConnectionProvider.getConnection());
-			List<User> userList = userDao.getAllUser();
-			for (User u : userList) {
+			UserDaoImpl userDao = new UserDaoImpl(DatabaseConnection.getConnection());
+					List<User> userList = userDao.getAllUser();
+					for (User u : userList) {
 			%>
 			<tr>
 				<td><%=u.getUserName()%></td>
@@ -46,7 +46,7 @@ if (activeAdmin == null) {
 				<td><%=u.getUserGender()%></td>
 				<td><%=userDao.getUserAddress(u.getUserId())%></td>
 				<td><%=u.getDateTime()%></td>
-				<td><a href="UpdateUserServlet?operation=deleteUser&uid=<%=u.getUserId()%>" role="button" class="btn btn-danger">Xóa</a></td>
+				<td><a href="UpdateUserController?operation=deleteUser&uid=<%=u.getUserId()%>" role="button" class="btn btn-danger">Xóa</a></td>
 			</tr>
 			<%
 			}

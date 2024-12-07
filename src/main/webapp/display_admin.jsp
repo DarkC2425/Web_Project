@@ -1,4 +1,4 @@
-<%@page import="com.webshoes.dao.AdminDao"%>
+<%@page import="com.shop.dao.Impl.AdminDaoImpl"%>
 <%@page errorPage="error_exception.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -10,7 +10,7 @@ if (activeAdmin == null) {
 	response.sendRedirect("adminlogin.jsp");
 	return;
 }
-AdminDao adminDao = new AdminDao(ConnectionProvider.getConnection());
+AdminDaoImpl adminDao = new AdminDaoImpl(DatabaseConnection.getConnection());
 List<Admin> adminList = adminDao.getAllAdmin();
 %>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ label {
 						<%@include file="Components/alert_message.jsp"%>
 
 						<!--admin-form-->
-						<form action="AdminServlet?operation=save" method="post">
+						<form action="AdminController?operation=save" method="post">
 							<div class="mb-3">
 								<label class="form-label">Tên</label> <input type="text"
 									name="name" placeholder="Enter name" class="form-control"
@@ -88,7 +88,7 @@ label {
 								<td><%=a.getName() %></td>
 								<td><%=a.getEmail() %></td>
 								<td><%=a.getPhone() %></td>
-								<td><a href="AdminServlet?operation=delete&id=<%=a.getId()%>" role="button" class="btn btn-danger">Xóa</a></td>
+								<td><a href="AdminController?operation=delete&id=<%=a.getId()%>" role="button" class="btn btn-danger">Xóa</a></td>
 							</tr>
 							<%
 							}

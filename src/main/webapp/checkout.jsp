@@ -1,11 +1,11 @@
-<%@page import="com.webshoes.beans.Message"%>
-<%@page import="com.webshoes.dao.ProductDao"%>
+<%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@page import="com.webshoes.dao.CartDao"%>
+<%@page import="com.shop.dao.Impl.CartDaoImpl"%>
 <%@page errorPage="error_exception.jsp"%>
 <%
-    User activeUser = (User) session.getAttribute("activeUser");
+User activeUser = (User) session.getAttribute("activeUser");
     if (activeUser == null) {
         Message message = new Message("Bạn chưa đăng nhập! Đăng nhập trước!!", "error", "alert-danger");
         session.setAttribute("message", message);
@@ -43,10 +43,10 @@
                                     &nbsp;
                                     <%=user.getUserPhone()%></h5>
                                     <%
-                                        StringBuilder str = new StringBuilder();
-                                        str.append(user.getUserAddress() + ", ");
-                                        str.append(user.getUserCity());
-                                        out.println(str);
+                                    StringBuilder str = new StringBuilder();
+                                                                                                                                                    str.append(user.getUserAddress() + ", ");
+                                                                                                                                                    str.append(user.getUserCity());
+                                                                                                                                                    out.println(str);
                                     %>
                                 <br>
                                 <div class="text-end">
@@ -62,7 +62,7 @@
                                     <h4>Phương thức thanh toán</h4>
                                 </div>
                             </div>
-                            <form action="OrderOperationServlet" method="post">
+                            <form action="OrderOperationController" method="post">
                                 <div class="form-check mt-2">
 
                                     <input class="form-check-input" type="radio" name="paymentMode"
@@ -87,11 +87,11 @@
                             <h4>Chi tiết giá</h4>
                             <hr>
                             <%
-                                if (from.trim().equals("cart")) {
-                                    CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
-//                                    int totalProduct = cartDao.getCartCountByUserId(user.getUserId());
-                                    int totalProduct = (int) session.getAttribute("totalQuantity");
-                                    float totalPrice = (float) session.getAttribute("totalPrice");
+                            if (from.trim().equals("cart")) {
+                                                                                                                        CartDaoImpl cartDao = new CartDaoImpl(DatabaseConnection.getConnection());
+                                                                                    //                                    int totalProduct = cartDao.getCartCountByUserId(user.getUserId());
+                                                                                                                        int totalProduct = (int) session.getAttribute("totalQuantity");
+                                                                                                                        float totalPrice = (float) session.getAttribute("totalPrice");
                             %>
                             <table class="table table-borderless">
                                 <tr>
@@ -117,9 +117,9 @@
                             </table>
                             <%
                             } else {
-                                ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
-                                int pid = (int) session.getAttribute("pid");
-                                float price = productDao.getProductPriceById(pid);
+                                                                                        ProductDaoImpl productDao = new ProductDaoImpl(DatabaseConnection.getConnection());
+                                                                                        int pid = (int) session.getAttribute("pid");
+                                                                                        float price = productDao.getProductPriceById(pid);
                             %>
                             <table class="table table-borderless">
                                 <tr>
@@ -164,7 +164,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                     </div>
-                    <form action="UpdateUserServlet" method="post">
+                    <form action="UpdateUserController" method="post">
                         <input type="hidden" name="operation" value="changeAddress">
                         <div class="modal-body mx-3">
                             <div class="mt-2">

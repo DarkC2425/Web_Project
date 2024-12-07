@@ -1,6 +1,6 @@
-<%@page import="com.webshoes.beans.Message"%>
-<%@page import="com.webshoes.beans.Product"%>
-<%@page import="com.webshoes.dao.ProductDao"%>
+<%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.model.Product"%>
+<%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
 <%@page errorPage="error_exception.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -27,8 +27,8 @@ if (activeAdmin == null) {
 	<!-- update product -->
 	<%
 	int pid = Integer.parseInt(request.getParameter("pid"));
-	ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
-	Product product = productDao.getProductsByProductId(pid);
+			ProductDaoImpl productDao = new ProductDaoImpl(DatabaseConnection.getConnection());
+			Product product = productDao.getProductsByProductId(pid);
 	%>
 	<div class="container mt-3">
 		<div class="row ">
@@ -37,7 +37,7 @@ if (activeAdmin == null) {
 					<div class="card-header text-center">
 						<h3>Chỉnh sửa sản phẩm</h3>
 					</div>
-					<form action="AddOperationServlet?pid=<%=pid%>" method="post"
+					<form action="AddOperationController?pid=<%=pid%>" method="post"
 						name="updateProductForm" enctype="multipart/form-data">
 						<div class="card-body">
 							<input type="hidden" name="operation" value="updateProduct">

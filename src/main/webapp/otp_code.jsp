@@ -40,7 +40,7 @@ label {
 						<h3 class="text-center mt-3">Mã xác nhận</h3>
 						<%@include file="Components/alert_message.jsp"%>
 
-						<form action="ChangePasswordServlet" method="post">
+						<form action="ChangePasswordController" method="post">
 							<div class="mb-3">
 								<label class="form-label">OTP</label> <input type="number"
 									name="code" placeholder="Nhập mã xác nhận" class="form-control"

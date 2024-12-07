@@ -1,11 +1,11 @@
-<%@page import="com.webshoes.dao.ProductDao"%>
-<%@page import="com.webshoes.beans.Product"%>
-<%@page import="com.webshoes.helper.ConnectionProvider"%>
+<%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
+<%@page import="com.shop.model.Product"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
 <%@page errorPage="error_exception.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%
-    ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
+ProductDaoImpl productDao = new ProductDaoImpl(DatabaseConnection.getConnection());
     List<Product> productList = productDao.getAllLatestProducts();
     List<Product> topDeals = productDao.getDiscountedProducts();
 %>

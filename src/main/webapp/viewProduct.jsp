@@ -1,15 +1,15 @@
-<%@page import="com.webshoes.dao.WishlistDao"%>
-<%@page import="com.webshoes.dao.ProductDao"%>
-<%@page import="com.webshoes.beans.Product"%>
+<%@page import="com.shop.dao.Impl.WishlistDaoImpl"%>
+<%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
+<%@page import="com.shop.model.Product"%>
 <%@page errorPage="error_exception.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 <%
-int productId = Integer.parseInt(request.getParameter("pid"));
-ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
-Product product = (Product) productDao.getProductsByProductId(productId);
-%>
+	int productId = Integer.parseInt(request.getParameter("pid"));
+		ProductDaoImpl productDao = new ProductDaoImpl(DatabaseConnection.getConnection());
+		Product product = (Product) productDao.getProductsByProductId(productId);
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 							} else {
 							%>
 							<button type="submit"
-								formaction="./AddToCartServlet?uid=<%=user.getUserId()%>&pid=<%=product.getProductId()%>"
+								formaction="./AddToCartController?uid=<%=user.getUserId()%>&pid=<%=product.getProductId()%>"
 								class="btn btn-primary text-white btn-lg">Thêm vào giỏ hàng</button>
 							&emsp; <a
 								href="checkout.jsp" id="buy-btn"

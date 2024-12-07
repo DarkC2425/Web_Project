@@ -1,22 +1,22 @@
-<%@page import="com.webshoes.dao.WishlistDao"%>
-<%@page import="com.webshoes.beans.User"%>
-<%@page import="com.webshoes.dao.CategoryDao"%>
-<%@page import="com.webshoes.beans.Product"%>
+<%@page import="com.shop.dao.Impl.WishlistDaoImpl"%>
+<%@page import="com.shop.model.User"%>
+<%@page import="com.shop.dao.Impl.CategoryDaoImpl"%>
+<%@page import="com.shop.model.Product"%>
 <%@page import="java.util.List"%>
-<%@page import="com.webshoes.helper.ConnectionProvider"%>
-<%@page import="com.webshoes.dao.ProductDao"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
+<%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%
-    User u = (User) session.getAttribute("activeUser");
-    WishlistDao wishlistDao = new WishlistDao(ConnectionProvider.getConnection());
+User u = (User) session.getAttribute("activeUser");
+    WishlistDaoImpl wishlistDao = new WishlistDaoImpl(DatabaseConnection.getConnection());
 
     String searchKey = request.getParameter("search");
     String catId = request.getParameter("category");
-    CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
+    CategoryDaoImpl categoryDao = new CategoryDaoImpl(DatabaseConnection.getConnection());
     String message = "";
 
-    ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
+    ProductDaoImpl productDao = new ProductDaoImpl(DatabaseConnection.getConnection());
     List<Product> prodList = null;
     if (searchKey != null) {
         if (!searchKey.isEmpty()) {
@@ -104,7 +104,7 @@
                                         if (wishlistDao.getWishlist(u.getUserId(), p.getProductId())) {
                                 %>
                                 <button
-                                    onclick="window.open('WishlistServlet?uid=<%=u.getUserId()%>&pid=<%=p.getProductId()%>&op=remove', '_self')"
+                                    onclick="window.open('WishlistController?uid=<%=u.getUserId()%>&pid=<%=p.getProductId()%>&op=remove', '_self')"
                                     class="btn btn-link" type="submit">
                                     <i class="fa-sharp fa-solid fa-heart" style="color: #ff0303;"></i>
                                 </button>
@@ -112,7 +112,7 @@
                                 } else {
                                 %>
                                 <button type="submit"
-                                        onclick="window.open('WishlistServlet?uid=<%=u.getUserId()%>&pid=<%=p.getProductId()%>&op=add', '_self')"
+                                        onclick="window.open('WishlistController?uid=<%=u.getUserId()%>&pid=<%=p.getProductId()%>&op=add', '_self')"
                                         class="btn btn-link">
                                     <i class="fa-sharp fa-solid fa-heart" style="color: #909191;"></i>
                                 </button>

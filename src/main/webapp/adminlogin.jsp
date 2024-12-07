@@ -42,7 +42,7 @@ label {
 					</div>
 					<div class="card-body px-5">
 						<!--login-form-->
-						<form id="login-form" action="LoginServlet" method="post">
+						<form id="login-form" action="LoginController" method="post">
 							<input type="hidden" name="login" value="admin"> 
 							
 							<div class="mb-3">

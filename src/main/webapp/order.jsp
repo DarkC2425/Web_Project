@@ -1,11 +1,11 @@
-<%@page import="com.webshoes.beans.Message"%>
-<%@page import="com.webshoes.beans.OrderedProduct"%>
-<%@page import="com.webshoes.beans.Order"%>
+<%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.model.OrderedProduct"%>
+<%@page import="com.shop.model.Order"%>
 <%@page import="java.util.List"%>
-<%@page import="com.webshoes.dao.OrderedProductDao"%>
-<%@page import="com.webshoes.dao.OrderDao"%>
-<%@page import="com.webshoes.helper.ConnectionProvider"%>
-<%@page import="com.webshoes.beans.User"%>
+<%@page import="com.shop.dao.Impl.OrderedProductDaoImpl"%>
+<%@page import="com.shop.dao.Impl.OrderDaoImpl"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
+<%@page import="com.shop.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@page errorPage="error_exception.jsp"%>
@@ -18,8 +18,8 @@ if (u2 == null) {
 	response.sendRedirect("login.jsp");
 	return;  
 }
-OrderDao orderDao = new OrderDao(ConnectionProvider.getConnection());
-OrderedProductDao ordProdDao = new OrderedProductDao(ConnectionProvider.getConnection());
+OrderDaoImpl orderDao = new OrderDaoImpl(DatabaseConnection.getConnection());
+OrderedProductDaoImpl ordProdDao = new OrderedProductDaoImpl(DatabaseConnection.getConnection());
 
 List<Order> orderList = orderDao.getAllOrderByUserId(u2.getUserId());
 %>

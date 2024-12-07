@@ -42,7 +42,7 @@
                             <%@include file="Components/alert_message.jsp"%>
 
                             <!--registration-form-->
-                            <form id="register-form" action="RegisterServlet" method="post">
+                            <form id="register-form" action="RegisterController" method="post">
                                 <div class="row">
                                     <div class="col-md-6 mt-2">
                                         <label class="form-label">Tên của bạn</label> <input type="text"

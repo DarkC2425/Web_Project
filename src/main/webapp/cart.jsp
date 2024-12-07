@@ -1,8 +1,8 @@
-<%@page import="com.webshoes.beans.Message"%>
-<%@page import="com.webshoes.beans.Product"%>
-<%@page import="com.webshoes.dao.ProductDao"%>
-<%@page import="com.webshoes.beans.Cart"%>
-<%@page import="com.webshoes.dao.CartDao"%>
+<%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.model.Product"%>
+<%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
+<%@page import="com.shop.model.Cart"%>
+<%@page import="com.shop.dao.Impl.CartDaoImpl"%>
 <%@page errorPage="error_exception.jsp"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -41,10 +41,10 @@ if (activeUser == null) {
 
 	<%
 	float totalPrice = 0;
-        int totalQuantity = 0;
-	CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
-	List<Cart> listOfCart = cartDao.getCartListByUserId(user.getUserId());
-	if (listOfCart == null || listOfCart.size() == 0) {
+			        int totalQuantity = 0;
+		CartDaoImpl cartDao = new CartDaoImpl(DatabaseConnection.getConnection());
+		List<Cart> listOfCart = cartDao.getCartListByUserId(user.getUserId());
+		if (listOfCart == null || listOfCart.size() == 0) {
 	%>
 	<div class="container text-center py-5 px-5">
 		<img src="Images/empty-cart.png" style="max-width: 250px;"
@@ -74,9 +74,9 @@ if (activeUser == null) {
 				</thead>
 				<tbody>
 					<%
-					ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
-					for (Cart c : listOfCart) {
-						Product prod = productDao.getProductsByProductId(c.getProductId());						
+					ProductDaoImpl productDao = new ProductDaoImpl(DatabaseConnection.getConnection());
+											for (Cart c : listOfCart) {
+												Product prod = productDao.getProductsByProductId(c.getProductId());
 					%>
 					<tr class="text-center">
 						<td><img src="Product_imgs\<%=prod.getProductImages()%>"
@@ -84,19 +84,19 @@ if (activeUser == null) {
 						<td class="text-start"><%=prod.getProductName()%></td>
 						<td><%=prod.getProductPriceAfterDiscount()%>&#8363;</td>
 						<td><a
-							href="CartOperationServlet?cid=<%=c.getCartId()%>&opt=1"
+							href="CartOperationController?cid=<%=c.getCartId()%>&opt=1"
 							role="button" class="btn btn-light"
 							style="border-radius: 50%; font-size: 8px;"> <i
 								class="fa-regular fa-plus fa-2xl"></i>
 						</a>
 						<div class="qty"><%=c.getQuantity()%></div>
 							<%if(c.getQuantity() > 1){ %>
-							<a href="CartOperationServlet?cid=<%=c.getCartId()%>&opt=2"
+							<a href="CartOperationController?cid=<%=c.getCartId()%>&opt=2"
 							role="button" class="btn btn-light" id="qtyDesc"
 							style="border-radius: 50%; font-size: 8px;"> <i
 								class="fa-solid fa-minus fa-2xl"></i></a>
 							<%}else{ %>
-							<a href="CartOperationServlet?cid=<%=c.getCartId()%>&opt=2"
+							<a href="CartOperationController?cid=<%=c.getCartId()%>&opt=2"
 							role="button" class="btn btn-light disabled" id="qtyDesc"
 							style="border-radius: 50%; font-size: 8px;"> <i
 								class="fa-solid fa-minus fa-2xl"></i></a>
@@ -105,7 +105,7 @@ if (activeUser == null) {
 
 						<td><%=c.getQuantity() * prod.getProductPriceAfterDiscount()%>&#8363;</td>
 						<td><a
-							href="CartOperationServlet?cid=<%=c.getCartId()%>&opt=3"
+							href="CartOperationController?cid=<%=c.getCartId()%>&opt=3"
 							class="btn btn-secondary" role="button">Xóa bỏ</a></td>
 					</tr>
 					<%

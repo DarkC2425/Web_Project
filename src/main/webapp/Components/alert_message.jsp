@@ -1,4 +1,4 @@
-<%@page import="com.webshoes.beans.Message"%>
+<%@page import="com.shop.model.Message"%>
 <%
 Message messg = (Message) session.getAttribute("message");
 if (messg != null) {

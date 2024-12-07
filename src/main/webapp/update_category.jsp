@@ -1,4 +1,4 @@
-<%@page import="com.webshoes.beans.Message"%>
+<%@page import="com.shop.model.Message"%>
 <%@page errorPage="error_exception.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -34,7 +34,7 @@ if (activeAdmin == null) {
 					<div class="card-header text-center">
 						<h3>Chỉnh sửa danh mục</h3>
 					</div>
-					<form action="AddOperationServlet?cid=<%=cid%>" method="post"
+					<form action="AddOperationController?cid=<%=cid%>" method="post"
 						enctype="multipart/form-data">
 						<div class="card-body">
 							<input type="hidden" name="operation" value="updateCategory">

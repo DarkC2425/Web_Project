@@ -1,5 +1,5 @@
-<%@page import="com.webshoes.beans.Message"%>
-<%@page import="com.webshoes.beans.User"%>
+<%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.model.User"%>
 <%@page errorPage="error_exception.jsp"%>
 <%
 User activeUser = (User) session.getAttribute("activeUser");
@@ -81,7 +81,7 @@ if (activeUser == null) {
 							class="list-group-item list-group-item-action list-btn">Các đơn hàng của tôi</button>
 						<button type="button" id="logout-btn"
 							class="list-group-item list-group-item-action list-btn"
-							onclick="window.open('LogoutServlet?user=user', '_self')">Đăng xuất</button>
+							onclick="window.open('LogoutController?user=user', '_self')">Đăng xuất</button>
 					</div>
 				</div>
 			</div>

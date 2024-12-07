@@ -43,7 +43,7 @@ label{
 						<%@include file="Components/alert_message.jsp" %>
 						
 						<!--login-form-->
-						<form id="login-form" action="LoginServlet" method="post">
+						<form id="login-form" action="LoginController" method="post">
 							<input type="hidden" name="login" value="user"> 
 							<div class="mb-3">
 								<label class="form-label">Email</label> <input

@@ -43,7 +43,7 @@ label {
 						<%@include file="Components/alert_message.jsp"%>
 
 						<!--change password-->
-						<form action="ChangePasswordServlet" method="post">
+						<form action="ChangePasswordController" method="post">
 							<div class="mb-3">
 								<label class="form-label">Email</label> <input type="email"
 									name="email" placeholder="Nhập Email" class="form-control"
