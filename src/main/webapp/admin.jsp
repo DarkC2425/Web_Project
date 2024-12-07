@@ -123,7 +123,7 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
         </div>
         <!--end-->
 
-        <!-- add category modal-->
+        <%-- <!-- add category modal-->
         <div class="modal fade" id="add-category" tabindex="-1"
              aria-labelledby="addCategoryModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -230,7 +230,7 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
                 </div>
             </div>
         </div>
-        <!-- end of modal -->
+        <!-- end of modal --> --%>
 
         <script type="text/javascript">
             function validate() {

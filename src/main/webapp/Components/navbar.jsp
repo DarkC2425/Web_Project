@@ -195,5 +195,113 @@ User user = (User) session.getAttribute("activeUser");
         }
     %>
     <!-- end  -->
+    <!-- add category modal-->
+        <div class="modal fade" id="add-category" tabindex="-1"
+             aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="addCategoryModalLabel">Thêm danh mục ở đây</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <form action="AddOperationController" method="post"
+                          enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <input type="hidden" name="operation" value="addCategory">
+
+                            <div class="mb-3">
+                                <label class="form-label"><b>Tên danh mục</b></label> <input
+                                    type="text" name="category_name"
+                                    placeholder="Nhập tên danh mục ở đây" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label"><b>Ảnh danh mục</b></label> <input class="form-control" type="file"
+                                                                                                            name="category_img" id="formFile">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary me-3">Thêm danh mục</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end of modal -->
+
+        <!-- add product modal-->
+        <div class="modal fade" id="add-product" tabindex="-1"
+             aria-labelledby="addProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="addProductModalLabel">Thêm sản phẩm ở đây</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <form action="AddOperationController" method="post"
+                          name="addProductForm" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <input type="hidden" name="operation" value="addProduct">
+                            <div>
+                                <label class="form-label"><b>Tên sản phẩm</b></label> <input
+                                    type="text" name="name" placeholder="Nhập tên sản phẩm"
+                                    class="form-control" required>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label"><b>Mô tả sản phẩm</b></label>
+                                <textarea class="form-control" name="description" rows="4"
+                                          placeholder="Nhập mô tả sản phẩm"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <label class="form-label"><b>Giá sản phẩm</b></label> <input
+                                        type="number" name="price" placeholder="Nhập giá"
+                                        class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label class="form-label"><b>Giảm giá</b></label> <input
+                                        type="number" name="discount" onblur="validate()"
+                                        placeholder="Nhập giảm giá!" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <label class="form-label"><b>Số lượng sản phẩm</b></label> <input
+                                        type="number" name="quantity"
+                                        placeholder="Nhập số lượng sản phẩm" class="form-control">
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label class="form-label"><b>Chọn thể loại danh mục</b></label> <select
+                                        name="categoryType" class="form-control">
+                                        <option value="0">--Chọn danh mục--</option>
+                                        <%
+                                            for (Category c : categoryList) {
+                                        %>
+                                        <option value="<%=c.getCategoryId()%>">
+                                            <%=c.getCategoryName()%></option>
+                                            <%
+                                                }
+                                            %>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label"><b>Ảnh sản phẩm</b></label> <input
+                                    type="file" name="photo" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary me-3">Thêm sản phẩm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end of modal -->
 </nav>
 
