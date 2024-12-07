@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <!-- Tiêu đề -->
     <div class="container my-5 text-center">
         <h1>Sản phẩm bán chạy nhất</h1>
