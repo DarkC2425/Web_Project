@@ -358,9 +358,6 @@
 									src="//theme.hstatic.net/200000260587/1001225543/14/ic-arr.svg?v=310" />
 							</a>
 								<ul class="sub-menu sub-lv1">
-									<li class="nav-item"><a
-										href="https://sicko.vn/account/login">Đăng ký tài khoản
-											(Tích điểm)</a></li>
 									<li class="nav-item"><a href="/pages/chinh-sach-doi-tra">Chính
 											sách đổi trả</a></li>
 									<li class="nav-item"><a
@@ -450,7 +447,7 @@
 									</ul>
 								</div></li>
 							<li class="actions-item action-user"><a
-								href="/account/login"> <img
+								href="/DoAnCuoiKy/login"> <img
 									src="//theme.hstatic.net/200000260587/1001225543/14/ic-user.svg?v=310"
 									alt="Tài khoản" class="ic-ac">
 							</a></li>
@@ -470,8 +467,5 @@
 				</div>
 			</div>
 		</div>
-		<main class="mainContent-theme  main-index ">
-			<h1 class="d-none entry-title">2NT</h1>
-		</main>
 	</div>
 </div>

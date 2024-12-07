@@ -1,0 +1,29 @@
+body {
+	background-color: #f8f9fa;
+	font-family: Arial, sans-serif;
+}
+
+.form-container {
+	background: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 30px;
+}
+
+.form-container h3 {
+	color: #343a40;
+}
+
+.form-label {
+	font-weight: bold;
+}
+
+.btn-primary {
+	background-color: #7a7a7a;
+	border-color: #7a7a7a;
+}
+
+.btn-primary:hover {
+	background-color: #7a7a7a;
+	border-color: #7a7a7a;
+}

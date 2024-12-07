@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -49,7 +43,7 @@
                 <!-- Liên kết quên mật khẩu hoặc đăng ký -->
                 <div class="text-center mt-3">
                     <a href="/forgot-password">Quên mật khẩu?</a> |
-                    <a href="/register">Đăng ký tài khoản</a>
+                    <a href="/DoAnCuoiKy/register">Đăng ký tài khoản</a>
                 </div>
             </div>
         </div>
@@ -57,5 +51,4 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 </html>
