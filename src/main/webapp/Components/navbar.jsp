@@ -106,7 +106,7 @@ User user = (User) session.getAttribute("activeUser");
                     <li class="nav-item"><a class="nav-link" aria-current="page"
                                             href="admin.jsp"><%=admin.getName()%></a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page"
-                                            href="LogoutServlet?user=admin"><i
+                                            href="LogoutController?user=admin"><i
                                 class="fa-solid fa-user-slash fa-sm" style="color: #aaf9ff;"></i>&nbsp;Đăng xuất</a></li>
                 </ul>
             </div>
@@ -170,7 +170,7 @@ User user = (User) session.getAttribute("activeUser");
                 <li class="nav-item active pe-3"><a class="nav-link"
                                                     aria-current="page" href="profile.jsp"><%=user.getUserName()%></a></li>
                 <li class="nav-item pe-3"><a class="nav-link"
-                                             aria-current="page" href="LogoutServlet?user=user"><i
+                                             aria-current="page" href="LogoutController?user=user"><i
                             class="fa-solid fa-user-slash" style="color: #aaf9ff;"></i>&nbsp;Đăng xuất</a></li>
             </ul>
             <%
