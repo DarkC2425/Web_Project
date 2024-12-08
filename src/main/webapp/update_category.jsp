@@ -1,7 +1,23 @@
 <%@page import="com.shop.model.Message"%>
 <%@page errorPage="error_exception.jsp"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page import="com.shop.model.Admin"%>
+<%@page import="com.shop.model.Cart"%>
+<%@page import="com.shop.dao.Impl.CartDaoImpl"%>
+<%@page import="com.shop.model.User"%>
+<%@page import="java.util.List"%>
+<%@page import="com.shop.model.Category"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
+<%@page import="com.shop.dao.Impl.CategoryDaoImpl"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+User user = (User) session.getAttribute("activeUser");
+Admin admin = (Admin) session.getAttribute("activeAdmin");
+
+CategoryDaoImpl catDao = new CategoryDaoImpl(DatabaseConnection.getConnection());
+List<Category> categoryList = catDao.getAllCategories();
+%>
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
 if (activeAdmin == null) {
@@ -19,8 +35,6 @@ if (activeAdmin == null) {
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
-	<!--navbar -->
-	<%@include file="Components/navbar.jsp"%>
 
 	<!-- update category -->
 	<%
@@ -40,21 +54,24 @@ if (activeAdmin == null) {
 							<input type="hidden" name="operation" value="updateCategory">
 							<div class="mb-3">
 								<label class="form-label"><b>Tên danh mục</b></label> <input
-									type="text" name="category_name" value="<%=category.getCategoryName()%>" class="form-control" >
+									type="text" name="category_name"
+									value="<%=category.getCategoryName()%>" class="form-control">
 							</div>
 							<div class="mb-3">
-								<label class="form-label"><b>Ảnh danh mục
-                                                                    </b></label><input class="form-control" type="file" name="category_img">
+								<label class="form-label"><b>Ảnh danh mục </b></label><input
+									class="form-control" type="file" name="category_img">
 							</div>
 							<div class="mb-3">
-								<label class="form-label"><b>Ảnh đã tải lên:&nbsp;</b></label><%=category.getCategoryImage()%>&emsp;<img
-									src="Product_imgs\<%=category.getCategoryImage()%>"
-									style="width: 80px; height: 80px; width: auto;">
-								<input type="hidden" name="image" value="<%=category.getCategoryImage()%>">
+								<label class="form-label"><b>Ảnh đã tải lên:&nbsp;</b></label><%=category.getCategoryImage()%>
+								&emsp;<img src="Product_imgs\<%=category.getCategoryImage()%>"
+									style="width: 80px; height: 80px; width: auto;"> <input
+									type="hidden" name="image"
+									value="<%=category.getCategoryImage()%>">
 							</div>
 						</div>
 						<div class="card-footer text-center">
-							<button type="submit" class="btn btn-lg btn-primary me-3">Cập nhật</button>
+							<button type="submit" class="btn btn-lg btn-primary me-3">Cập
+								nhật</button>
 						</div>
 					</form>
 				</div>

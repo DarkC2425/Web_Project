@@ -2,8 +2,24 @@
 <%@page import="com.shop.model.Product"%>
 <%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
 <%@page errorPage="error_exception.jsp"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page import="com.shop.model.Admin"%>
+<%@page import="com.shop.model.Cart"%>
+<%@page import="com.shop.dao.Impl.CartDaoImpl"%>
+<%@page import="com.shop.model.User"%>
+<%@page import="java.util.List"%>
+<%@page import="com.shop.model.Category"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
+<%@page import="com.shop.dao.Impl.CategoryDaoImpl"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+User user = (User) session.getAttribute("activeUser");
+Admin admin = (Admin) session.getAttribute("activeAdmin");
+
+CategoryDaoImpl catDao = new CategoryDaoImpl(DatabaseConnection.getConnection());
+List<Category> categoryList = catDao.getAllCategories();
+%>
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
 if (activeAdmin == null) {
@@ -21,14 +37,13 @@ if (activeAdmin == null) {
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
-	<!--navbar -->
-	<%@include file="Components/navbar.jsp"%>
+
 
 	<!-- update product -->
 	<%
 	int pid = Integer.parseInt(request.getParameter("pid"));
-			ProductDaoImpl productDao = new ProductDaoImpl(DatabaseConnection.getConnection());
-			Product product = productDao.getProductsByProductId(pid);
+	ProductDaoImpl productDao = new ProductDaoImpl(DatabaseConnection.getConnection());
+	Product product = productDao.getProductsByProductId(pid);
 	%>
 	<div class="container mt-3">
 		<div class="row ">
@@ -99,7 +114,8 @@ if (activeAdmin == null) {
 							</div>
 						</div>
 						<div class="card-footer text-center">
-							<button type="submit" class="btn btn-lg btn-primary me-3">Cập nhật</button>
+							<button type="submit" class="btn btn-lg btn-primary me-3">Cập
+								nhật</button>
 						</div>
 					</form>
 				</div>

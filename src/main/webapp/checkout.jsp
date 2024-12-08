@@ -1,9 +1,16 @@
 <%@page import="com.shop.model.Message"%>
 <%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
 <%@page import="com.shop.dao.Impl.CartDaoImpl"%>
 <%@page errorPage="error_exception.jsp"%>
+<%@page import="com.shop.model.Admin"%>
+<%@page import="com.shop.model.Cart"%>
+<%@page import="com.shop.model.User"%>
+<%@page import="java.util.List"%>
+<%@page import="com.shop.model.Category"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
+<%@page import="com.shop.dao.Impl.CategoryDaoImpl"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%
 User activeUser = (User) session.getAttribute("activeUser");
     if (activeUser == null) {
@@ -14,6 +21,13 @@ User activeUser = (User) session.getAttribute("activeUser");
     }
     String from = (String) session.getAttribute("from");
 %>
+<%
+User user = (User) session.getAttribute("activeUser");
+    Admin admin = (Admin) session.getAttribute("activeAdmin");
+
+    CategoryDaoImpl catDao = new CategoryDaoImpl(DatabaseConnection.getConnection());
+    List<Category> categoryList = catDao.getAllCategories();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,8 +36,7 @@ User activeUser = (User) session.getAttribute("activeUser");
         <%@include file="Components/common_css_js.jsp"%>
     </head>
     <body>
-        <!--navbar -->
-        <%@include file="Components/navbar.jsp"%>
+
 
         <div class="container mt-5" style="font-size: 17px;">
             <div class="row">

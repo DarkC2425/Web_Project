@@ -26,8 +26,6 @@ label{
 </head>
 <body >  
 
-	<!--navbar -->
-	<%@include file="Components/navbar.jsp"%>
 
 	<div class="container-fluid">
 		<div class="row mt-5">

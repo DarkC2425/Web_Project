@@ -25,9 +25,6 @@
         </style>
     </head>
     <body>
-        <!--navbar -->
-        <%@include file="Components/navbar.jsp"%>
-
         <div class="container-fluid mt-4">
             <div class="row g-0">
                 <div class="col-md-6 offset-md-3">

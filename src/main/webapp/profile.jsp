@@ -49,8 +49,7 @@ if (activeUser == null) {
 </style>
 </head>
 <body>
-	<!--navbar -->
-	<%@include file="Components/navbar.jsp"%>
+
 
 	<div class="container-fluid px-3 py-5">
 		<div class="row">

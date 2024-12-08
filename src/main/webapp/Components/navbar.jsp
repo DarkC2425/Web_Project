@@ -19,7 +19,7 @@ User user = (User) session.getAttribute("activeUser");
 <style>
     .navbar {
         font-weight: 500;
-        background: linear-gradient(109.6deg, rgb(9, 154, 151) 11.2%, rgb(21, 205, 168) 91.1%);
+        background: linear-gradient(109.6deg, rgb(9, 154, 151) 11.2%, rgb(255, 99, 0) 91.1%);
     }
 
     .nav-link {
@@ -86,7 +86,7 @@ User user = (User) session.getAttribute("activeUser");
     %>
     <div class="container">
         <a class="navbar-brand" href="admin.jsp"><i
-                class="fa-sharp fa-solid fa-house" style="color: #ffffff;"></i>&ensp;Web Shoes</a>
+                class="fa-sharp fa-solid fa-house" style="color: #ffffff;"></i>&ensp;2NT</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -121,7 +121,7 @@ User user = (User) session.getAttribute("activeUser");
     <!-- for all -->
     <div class="container">
         <a class="navbar-brand" href="index.jsp"><i
-                class="fa-sharp fa-solid fa-house" style="color: #ffffff;"></i>&ensp;Web Shoes</a>
+                class="fa-sharp fa-solid fa-house" style="color: #ffffff;"></i>&ensp;2NT</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"

@@ -1,5 +1,13 @@
 <%@page import="com.shop.dao.Impl.AdminDaoImpl"%>
 <%@page errorPage="error_exception.jsp"%>
+<%@page import="com.shop.model.Admin"%>
+<%@page import="com.shop.model.Cart"%>
+<%@page import="com.shop.dao.Impl.CartDaoImpl"%>
+<%@page import="com.shop.model.User"%>
+<%@page import="java.util.List"%>
+<%@page import="com.shop.model.Category"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
+<%@page import="com.shop.dao.Impl.CategoryDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -26,8 +34,7 @@ label {
 </style>
 </head>
 <body>
-	<!--navbar -->
-	<%@include file="Components/navbar.jsp"%>
+
 
 	<div class="container-fluid px-5 py-3">
 		<div class="row">

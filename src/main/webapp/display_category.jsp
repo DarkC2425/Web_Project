@@ -1,5 +1,13 @@
 <%@page import="com.shop.model.Message"%>
 <%@page errorPage="error_exception.jsp"%>
+<%@page import="com.shop.model.Admin"%>
+<%@page import="com.shop.model.Cart"%>
+<%@page import="com.shop.dao.Impl.CartDaoImpl"%>
+<%@page import="com.shop.model.User"%>
+<%@page import="java.util.List"%>
+<%@page import="com.shop.model.Category"%>
+<%@page import="com.shop.util.DatabaseConnection"%>
+<%@page import="com.shop.dao.Impl.CategoryDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -11,6 +19,13 @@ if (activeAdmin == null) {
 	return;
 }
 %>
+<%
+User user = (User) session.getAttribute("activeUser");
+    Admin admin = (Admin) session.getAttribute("activeAdmin");
+
+    CategoryDaoImpl catDao = new CategoryDaoImpl(DatabaseConnection.getConnection());
+    List<Category> categoryList = catDao.getAllCategories();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +34,6 @@ if (activeAdmin == null) {
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
-	<!--navbar -->
-	<%@include file="Components/navbar.jsp"%>
-
 	<!-- Category -->
 	<div class="container mt-3">
 	<%@include file="Components/alert_message.jsp"%>

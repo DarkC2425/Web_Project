@@ -1,4 +1,6 @@
 <%@page import="com.shop.model.Message"%>
+<%@page import="com.shop.model.Admin"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@page errorPage="error_exception.jsp"%>
@@ -42,9 +44,6 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
         </style>
     </head>
     <body>
-        <!--navbar -->
-        <%@include file="Components/navbar.jsp"%>
-
         <!--admin dashboard -->
         <div class="container-fluid py-4 px-3">
             <%@include file="Components/alert_message.jsp"%>

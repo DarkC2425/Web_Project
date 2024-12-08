@@ -4,12 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnection {
-	private final static String serverName = "localhost";
+	private final static String serverName = "DINO";
 	private final static String dbName = "2NTSHOP_DATABASE";
 	private final static String portNumber = "1433";
 	private final static String instance = "";
-	private final static String userID = "sa";
-	private final static String password = "123456789";
+	private final static String userID = "ssa";
+	private final static String password = "24082004@Ny";
 
 	public static Connection getConnection() {
 		try {
