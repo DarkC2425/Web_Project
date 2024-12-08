@@ -30,7 +30,7 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 <head>
 <meta charset="UTF-8">
 <title>Xem sản phẩm</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../Components/common_css_js.jsp"%>
 <style type="text/css">
 .real-price {
 	font-size: 26px !important;
@@ -50,7 +50,7 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 </head>
 <body>
 	<div class="container mt-5">
-		<%@include file="Components/alert_message.jsp"%>
+		<%@include file="../Components/alert_message.jsp"%>
 		<div class="row border border-3">
 			<div class="col-md-6">
 				<div class="container-fluid text-end my-3">
@@ -90,10 +90,10 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 							} else {
 							%>
 							<button type="submit"
-								formaction="./AddToCartController?uid=<%=user.getUserId()%>&pid=<%=product.getProductId()%>"
+								formaction="../AddToCartController?uid=<%=user.getUserId()%>&pid=<%=product.getProductId()%>"
 								class="btn btn-primary text-white btn-lg">Thêm vào giỏ
 								hàng</button>
-							&emsp; <a href="checkout.jsp" id="buy-btn"
+							&emsp; <a href="user/checkout.jsp" id="buy-btn"
 								class="btn btn-info text-white btn-lg" role="button"
 								aria-disabled="true">Mua ngay bây giờ</a>
 							<%

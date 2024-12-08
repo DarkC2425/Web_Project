@@ -22,12 +22,12 @@ public class LogoutController extends HttpServlet {
 			session.removeAttribute("activeUser");
 			Message message = new Message("Đăng xuất thành công!!", "success", "alert-success");
 			session.setAttribute("message", message);
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("views/login.jsp");
 		}else if(user.trim().equals("admin")) {
 			session.removeAttribute("activeAdmin");
 			Message message = new Message("Đăng xuất thành công!!", "success", "alert-success");
 			session.setAttribute("message", message);
-			response.sendRedirect("adminlogin.jsp");
+			response.sendRedirect("views/admin/adminlogin.jsp");
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -49,7 +49,7 @@ public class RegisterController extends HttpServlet {
                 message = new Message("Đã xảy ra lỗi! Thử lại lần nữa!!", "error", "alert-danger");
             }
             session.setAttribute("message", message);
-            response.sendRedirect("register.jsp");
+            response.sendRedirect("views/register.jsp");
             return;
 
         } catch (Exception e) {

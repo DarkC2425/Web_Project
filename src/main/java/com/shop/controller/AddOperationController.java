@@ -62,7 +62,7 @@ public class AddOperationController extends HttpServlet {
 				message = new Message("Đã xảy ra lỗi! Thử lại!!", "error", "alert-danger");
 			}
 			session.setAttribute("message", message);
-			response.sendRedirect("admin.jsp");
+			response.sendRedirect("views/admin/admin.jsp");
 
 		} else if (operation.trim().equals("addProduct")) {
 
@@ -102,7 +102,7 @@ public class AddOperationController extends HttpServlet {
 				message = new Message("Đã xảy ra lỗi! Thử lại!!", "error", "alert-danger");
 			}
 			session.setAttribute("message", message);
-			response.sendRedirect("admin.jsp");
+			response.sendRedirect("views/admin/admin.jsp");
 			
 		} else if (operation.trim().equals("updateCategory")) {
 
@@ -133,13 +133,13 @@ public class AddOperationController extends HttpServlet {
 			}
 			message = new Message("Đã cập nhật danh mục thành công!!", "success", "alert-success");
 			session.setAttribute("message", message);
-			response.sendRedirect("display_category.jsp");
+			response.sendRedirect("views/admin/display_category.jsp");
 			
 		} else if (operation.trim().equals("deleteCategory")) {
 
 			int cid = Integer.parseInt(request.getParameter("cid"));
 			catDao.deleteCategory(cid);
-			response.sendRedirect("display_category.jsp");
+			response.sendRedirect("views/admin/display_category.jsp");
 
 		} else if (operation.trim().equals("updateProduct")) {
 
@@ -184,13 +184,13 @@ public class AddOperationController extends HttpServlet {
 			}
 			message = new Message("Đã cập nhật sản phẩm thành công!!", "success", "alert-success");
 			session.setAttribute("message", message);
-			response.sendRedirect("display_products.jsp");
+			response.sendRedirect("views/admin/display_products.jsp");
 
 		} else if (operation.trim().equals("deleteProduct")) {
 
 			int pid = Integer.parseInt(request.getParameter("pid"));
 			pdao.deleteProduct(pid);
-			response.sendRedirect("display_products.jsp");
+			response.sendRedirect("views/admin/display_products.jsp");
 
 		}
 		return;

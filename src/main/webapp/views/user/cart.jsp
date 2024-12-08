@@ -17,7 +17,7 @@ User activeUser = (User) session.getAttribute("activeUser");
 if (activeUser == null) {
 	Message message = new Message("Bạn chưa đăng nhập! Đăng nhập trước!!", "error", "alert-danger");
 	session.setAttribute("message", message);
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("../login.jsp");
 	return;
 }
 %>
@@ -33,7 +33,7 @@ List<Category> categoryList = catDao.getAllCategories();
 <head>
 <meta charset="UTF-8">
 <title>Giỏ hàng</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 <style type="text/css">
 .qty {
 	display: inline-block;
@@ -58,7 +58,7 @@ List<Category> categoryList = catDao.getAllCategories();
 	if (listOfCart == null || listOfCart.size() == 0) {
 	%>
 	<div class="container text-center py-5 px-5">
-		<img src="Images/empty-cart.png" style="max-width: 250px;"
+		<img src="../../Images/empty-cart.png" style="max-width: 250px;"
 			class="img-fluid">
 		<h4 class="mt-5">Giỏ hàng của bạn đang trống!</h4>
 		<p>Thêm hàng hóa ngay bây giờ.</p>
@@ -70,7 +70,7 @@ List<Category> categoryList = catDao.getAllCategories();
 	%>
 
 	<div class="container mt-5">
-		<%@include file="Components/alert_message.jsp"%>
+		<%@include file="../../Components/alert_message.jsp"%>
 		<div class="card px-3 py-3">
 			<table class="table table-hover">
 				<thead>
@@ -95,7 +95,7 @@ List<Category> categoryList = catDao.getAllCategories();
 						<td class="text-start"><%=prod.getProductName()%></td>
 						<td><%=prod.getProductPriceAfterDiscount()%>&#8363;</td>
 						<td><a
-							href="CartOperationController?cid=<%=c.getCartId()%>&opt=1"
+							href="../../CartOperationController?cid=<%=c.getCartId()%>&opt=1"
 							role="button" class="btn btn-light"
 							style="border-radius: 50%; font-size: 8px;"> <i
 								class="fa-regular fa-plus fa-2xl"></i>
@@ -103,13 +103,13 @@ List<Category> categoryList = catDao.getAllCategories();
 							<div class="qty"><%=c.getQuantity()%></div> <%
  if (c.getQuantity() > 1) {
  %>
-							<a href="CartOperationController?cid=<%=c.getCartId()%>&opt=2"
+							<a href="../../CartOperationController?cid=<%=c.getCartId()%>&opt=2"
 							role="button" class="btn btn-light" id="qtyDesc"
 							style="border-radius: 50%; font-size: 8px;"> <i
 								class="fa-solid fa-minus fa-2xl"></i></a> <%
  } else {
  %> <a
-							href="CartOperationController?cid=<%=c.getCartId()%>&opt=2"
+							href="../../CartOperationController?cid=<%=c.getCartId()%>&opt=2"
 							role="button" class="btn btn-light disabled" id="qtyDesc"
 							style="border-radius: 50%; font-size: 8px;"> <i
 								class="fa-solid fa-minus fa-2xl"></i></a> <%
@@ -118,7 +118,7 @@ List<Category> categoryList = catDao.getAllCategories();
 
 						<td><%=c.getQuantity() * prod.getProductPriceAfterDiscount()%>&#8363;</td>
 						<td><a
-							href="CartOperationController?cid=<%=c.getCartId()%>&opt=3"
+							href="../../CartOperationController?cid=<%=c.getCartId()%>&opt=3"
 							class="btn btn-secondary" role="button">Xóa bỏ</a></td>
 					</tr>
 					<%
@@ -135,7 +135,7 @@ List<Category> categoryList = catDao.getAllCategories();
 				</tbody>
 			</table>
 			<div class="text-end">
-				<a href="products.jsp" class="btn btn-outline-primary" role="button"
+				<a href="../products.jsp" class="btn btn-outline-primary" role="button"
 					aria-disabled="true">Tiếp tục mua sắm</a>&nbsp; <a
 					href="checkout.jsp" id="checkout-btn"
 					class="btn btn-outline-primary" role="button" aria-disabled="true">Thanh

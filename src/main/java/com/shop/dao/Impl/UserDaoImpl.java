@@ -110,7 +110,7 @@ public class UserDaoImpl implements IUserDao {
 			PreparedStatement psmt = this.con.prepareStatement(query);
 			psmt.setString(1, user.getUserAddress());
 			psmt.setString(2, user.getUserCity());
-			psmt.setInt(5, user.getUserId());
+			psmt.setInt(3, user.getUserId());
 
 			psmt.executeUpdate();
 

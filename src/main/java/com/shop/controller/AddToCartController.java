@@ -41,7 +41,7 @@ public class AddToCartController extends HttpServlet {
 		ProductDaoImpl productDaoImpl = new ProductDaoImpl(DatabaseConnection.getConnection());
 		productDaoImpl.updateQuantity(pid, productDaoImpl.getProductQuantityById(pid) - 1);
 		session.setAttribute("message", message);
-		resp.sendRedirect("viewProduct.jsp?pid="+pid);
+		resp.sendRedirect("views/viewProduct.jsp?pid="+pid);
 	}
 
 }

@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Đăng ký</title>
-        <%@include file="Components/common_css_js.jsp"%>
+        <%@include file="../../Components/common_css_js.jsp"%>
         <style>
             label {
                 font-weight: bold;
@@ -32,14 +32,14 @@
                         <div class="card-body px-5">
 
                             <div class="container text-center">
-                                <img src="Images/signUp.png" style="max-width: 80px;"
+                                <img src="../Images/signUp.png" style="max-width: 80px;"
                                      class="img-fluid">
                             </div>
                             <h3 class="text-center">Tạo tài khoản</h3>
-                            <%@include file="Components/alert_message.jsp"%>
+                            <%@include file="../Components/alert_message.jsp"%>
 
                             <!--registration-form-->
-                            <form id="register-form" action="RegisterController" method="post">
+                            <form id="register-form" action="../RegisterController" method="post">
                                 <div class="row">
                                     <div class="col-md-6 mt-2">
                                         <label class="form-label">Tên của bạn</label> <input type="text"

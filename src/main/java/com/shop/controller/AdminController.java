@@ -50,7 +50,7 @@ public class AdminController extends HttpServlet {
 			}
 		}
 		session.setAttribute("message", message);
-		response.sendRedirect("display_admin.jsp");
+		response.sendRedirect("views/admin/display_admin.jsp");
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

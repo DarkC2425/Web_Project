@@ -6,11 +6,10 @@ User activeUser = (User) session.getAttribute("activeUser");
 if (activeUser == null) {
 	Message message = new Message("Bạn chưa đăng nhập! Đăng nhập trước!!", "error", "alert-danger");
 	session.setAttribute("message", message);
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("../login.jsp");
 	return;  
 }
 %>  
-
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -20,7 +19,7 @@ if (activeUser == null) {
 <head>
 <meta charset="UTF-8">
 <title>Thông tin của tôi</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 <style>
 .cus-active {
 	background-color: #e6eefa !important;
@@ -58,7 +57,7 @@ if (activeUser == null) {
 					<div class="row mt-2 mb-2">
 						<div class="col-md-4">
 							<div class="container text-center">
-								<img src="Images/profile.png" style="max-width: 60px;"
+								<img src="../../Images/profile.png" style="max-width: 60px;"
 									class="img-fluid">
 							</div>
 						</div>
@@ -80,14 +79,15 @@ if (activeUser == null) {
 							class="list-group-item list-group-item-action list-btn">Các đơn hàng của tôi</button>
 						<button type="button" id="logout-btn"
 							class="list-group-item list-group-item-action list-btn"
-							onclick="window.open('LogoutController?user=user', '_self')">Đăng xuất</button>
+							onclick="window.open('../../LogoutController?user=user', '_self')">Đăng xuất
+							</button>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-9">
 				<div class="card">
 					<div id="profile">
-						<%@include file="Components/alert_message.jsp"%>
+						<%@include file="../../Components/alert_message.jsp"%>
 						<%@include file="personalInfo.jsp"%>
 					</div>
 					<div id="wishlist" style="display: none;">

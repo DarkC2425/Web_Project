@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Đăng nhập</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../Components/common_css_js.jsp"%>
 <style>
 label{
 	font-weight: bold;
@@ -34,14 +34,14 @@ label{
 					<div class="card-body px-5">
 
 						<div class="container text-center">
-							<img src="Images/login.png" style="max-width: 100px;"
+							<img src="../Images/login.png" style="max-width: 100px;"
 								class="img-fluid">
 						</div>
 						<h3 class="text-center">Đăng nhập</h3>
-						<%@include file="Components/alert_message.jsp" %>
+						<%@include file="../Components/alert_message.jsp" %>
 						
 						<!--login-form-->
-						<form id="login-form" action="LoginController" method="post">
+						<form id="login-form" action="../LoginController" method="post">
 							<input type="hidden" name="login" value="user"> 
 							<div class="mb-3">
 								<label class="form-label">Email</label> <input

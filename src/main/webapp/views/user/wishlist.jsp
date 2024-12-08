@@ -16,7 +16,7 @@ User u1 = (User) session.getAttribute("activeUser");
 if (u1 == null) {
 	Message message = new Message("Bạn chưa đăng nhập! Đăng nhập trước!!", "error", "alert-danger");
 	session.setAttribute("message", message);
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("../login.jsp");
 	return;  
 }
 WishlistDaoImpl wishListDao = new WishlistDaoImpl(DatabaseConnection.getConnection());
@@ -29,7 +29,7 @@ ProductDaoImpl pDao = new ProductDaoImpl(DatabaseConnection.getConnection());
 	if (wlist == null || wlist.size() == 0) {
 	%>
 	<div class="container mt-5 mb-5 text-center">
-		<img src="Images/wishlist.png" style="max-width: 200px;"
+		<img src="../../Images/wishlist.png" style="max-width: 200px;"
 			class="img-fluid">
 		<h4 class="mt-3">Danh sách yêu thích trống</h4>
 		Bạn chưa có món hàng nào trong danh sách yêu thích. Hãy thêm sản phẩm!
@@ -53,7 +53,7 @@ ProductDaoImpl pDao = new ProductDaoImpl(DatabaseConnection.getConnection());
 				<td class="text-start"><%=p.getProductName()%></td>
 				<td><%=p.getProductPriceAfterDiscount()%>&#8363;</td>
 				<td><a
-					href="WishlistController?uid=<%=u1.getUserId()%>&pid=<%=p.getProductId()%>&op=delete"
+					href="../../WishlistController?uid=<%=u1.getUserId()%>&pid=<%=p.getProductId()%>&op=delete"
 					class="btn btn-secondary" role="button">Xóa bỏ</a></td>
 			</tr>
 			<%

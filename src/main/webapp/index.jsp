@@ -68,7 +68,7 @@ User user = (User) session.getAttribute("activeUser");
 				for (Category c : categoryList) {
                     %>
 				<div class="col text-center">
-					<a href="products.jsp?category=<%=c.getCategoryId()%>"
+					<a href="views/products.jsp?category=<%=c.getCategoryId()%>"
 						style="text-decoration: none;">
 						<div class="card cus-card h-100">
 							<div class="container text-center">

@@ -18,7 +18,7 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
     <head>
         <meta charset="UTF-8">
         <title>Trang Admin</title>
-        <%@include file="Components/common_css_js.jsp"%>
+        <%@include file="../../Components/common_css_js.jsp"%>
         <style type="text/css">
             .cus-active {
                 background-color: #e6faec !important;
@@ -46,10 +46,10 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
     <body>
         <!--admin dashboard -->
         <div class="container-fluid py-4 px-3">
-            <%@include file="Components/alert_message.jsp"%>
+            <%@include file="../../Components/alert_message.jsp"%>
             <div class="row">
                 <div class="container text-center" id="details">
-                    <img src="Images/admin.png" style="max-width: 180px;"
+                    <img src="../../Images/admin.png" style="max-width: 180px;"
                          class="img-fluid">
                     <h3>
                         Chào mừng "<%=activeAdmin.getName()%>"
@@ -62,7 +62,7 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
                         <a href="display_category.jsp">
                             <div class="card text-bg-light mb-3 text-center">
                                 <div class="card-body">
-                                    <img src="Images/Category_icon.png" style="max-width: 80px;"
+                                    <img src="../../Images/Category_icon.png" style="max-width: 80px;"
                                          class="img-fluid">
                                     <h4 class="card-title mt-3">Danh mục</h4>
                                 </div>
@@ -73,7 +73,7 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
                         <a href="display_products.jsp">
                             <div class="card text-bg-light mb-3 text-center">
                                 <div class="card-body">
-                                    <img src="Images/Product_icon.png" style="max-width: 80px;"
+                                    <img src="../../Images/Product_icon.png" style="max-width: 80px;"
                                          class="img-fluid">
                                     <h4 class="card-title mt-3">Sản phẩm</h4>
                                 </div>
@@ -84,7 +84,7 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
                         <a href="display_orders.jsp">
                             <div class="card text-bg-light mb-3 text-center">
                                 <div class="card-body">
-                                    <img src="Images/Order_icon.png" style="max-width: 80px;"
+                                    <img src="../../Images/Order_icon.png" style="max-width: 80px;"
                                          class="img-fluid">
                                     <h4 class="card-title mt-3">Đơn đặt hàng</h4>
                                 </div>
@@ -99,7 +99,7 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
                         <a href="display_users.jsp">
                             <div class="card text-bg-light mb-3 text-center">
                                 <div class="card-body">
-                                    <img src="Images/User_icon.png" style="max-width: 80px;"
+                                    <img src="../../Images/User_icon.png" style="max-width: 80px;"
                                          class="img-fluid">
                                     <h4 class="card-title mt-3">User's</h4>
                                 </div>
@@ -110,7 +110,7 @@ Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
                         <a href="display_admin.jsp">
                             <div class="card text-bg-light mb-3 text-center">
                                 <div class="card-body">
-                                    <img src="Images/Admin_icon.png" style="max-width: 80px;"
+                                    <img src="../../Images/Admin_icon.png" style="max-width: 80px;"
                                          class="img-fluid">
                                     <h4 class="card-title mt-3">Admin</h4>
                                 </div>

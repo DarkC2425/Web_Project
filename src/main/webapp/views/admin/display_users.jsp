@@ -32,7 +32,7 @@ if (activeAdmin == null) {
 <head>
 <meta charset="UTF-8">
 <title>Xem người dùng</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 </head>
 <body>
 
@@ -60,7 +60,7 @@ if (activeAdmin == null) {
 				<td><%=u.getUserGender()%></td>
 				<td><%=userDao.getUserAddress(u.getUserId())%></td>
 				<td><%=u.getDateTime()%></td>
-				<td><a href="UpdateUserController?operation=deleteUser&uid=<%=u.getUserId()%>" role="button" class="btn btn-danger">Xóa</a></td>
+				<td><a href="../../UpdateUserController?operation=deleteUser&uid=<%=u.getUserId()%>" role="button" class="btn btn-danger">Xóa</a></td>
 			</tr>
 			<%
 			}

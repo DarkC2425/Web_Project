@@ -95,12 +95,12 @@ public class ProductDaoImpl implements IProductDao{
     public List<Product> getProductsByPage(int page) {
         List<Product> list = new ArrayList<Product>();
         int begin = page * 20 - 20;
-        int end = page * 20;
+        int number = 20;
         try {
             String query = "select * from product ORDER BY pid OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
             PreparedStatement psmt = this.con.prepareStatement(query);
             psmt.setInt(1, begin);
-            psmt.setInt(2, end);
+            psmt.setInt(2, number);
             ResultSet rs = psmt.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
@@ -147,13 +147,13 @@ public class ProductDaoImpl implements IProductDao{
     public List<Product> getAllProductsByCategoryId(int catId, int page) {
         List<Product> list = new ArrayList<Product>();
         int begin = page * 20 - 20;
-        int end = page * 20;
+        int number = 20;
         try {
             String query = "select * from product where cid = ? ORDER BY pid OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
             PreparedStatement psmt = this.con.prepareStatement(query);
             psmt.setInt(1, catId);
             psmt.setInt(2, begin);
-            psmt.setInt(3, end);
+            psmt.setInt(3, number);
             ResultSet rs = psmt.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
@@ -191,15 +191,15 @@ public class ProductDaoImpl implements IProductDao{
     public List<Product> getAllProductsBySearchKey(String search, int page) {
         List<Product> list = new ArrayList<Product>();
         int begin = page * 20 - 20;
-        int end = page * 20;
+        int number = 20;
         try {
             String query = "select * from product where lower(name) like ? or lower(description) like ? ORDER BY pid OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
             PreparedStatement psmt = this.con.prepareStatement(query);
             search = "%" + search + "%";
-            psmt.setString(1, search);
-            psmt.setString(2, search);
+            psmt.setString(1, '%'+search+'%');
+            psmt.setString(2, '%'+search+'%');
             psmt.setInt(3, begin);
-            psmt.setInt(4, end);
+            psmt.setInt(4, number);
             ResultSet rs = psmt.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
@@ -224,8 +224,8 @@ public class ProductDaoImpl implements IProductDao{
         try {
             String query = "select count(*) from product where lower(name) like ? or lower(description) like ?";
             PreparedStatement psmt = this.con.prepareStatement(query);
-            psmt.setString(1, search);
-            psmt.setString(2, search);
+            psmt.setString(1, '%'+search+'%');
+            psmt.setString(2, '%'+search+'%');
             ResultSet rs = psmt.executeQuery();
             rs.next();
             count = rs.getInt(1);

@@ -32,13 +32,13 @@ public class CartOperationController extends HttpServlet {
 				cartDaoImpl.updateQuantity(cid, qty+1);
 				//updating(decreasing) quantity of product in database
 				productDaoImpl.updateQuantity(pid, productDaoImpl.getProductQuantityById(pid) - 1);
-				response.sendRedirect("cart.jsp");
+				response.sendRedirect("views/user/cart.jsp");
 				
 			}else {
 				HttpSession session = request.getSession();
 				Message message = new Message("Sản phẩm đã hết hàng!", "error", "alert-danger");
 				session.setAttribute("message", message);
-				response.sendRedirect("cart.jsp");
+				response.sendRedirect("views/user/cart.jsp");
 			}
 			
 		}else if(opt == 2) {
@@ -46,7 +46,7 @@ public class CartOperationController extends HttpServlet {
 			
 			//updating(increasing) quantity of product in database
 			productDaoImpl.updateQuantity(pid, productDaoImpl.getProductQuantityById(pid) + 1);
-			response.sendRedirect("cart.jsp");
+			response.sendRedirect("views/user/cart.jsp");
 			
 		}else if(opt == 3) {
 			cartDaoImpl.removeProduct(cid);
@@ -57,7 +57,7 @@ public class CartOperationController extends HttpServlet {
 			//updating quantity of product in database
 			//adding all the product qty back to database
 			productDaoImpl.updateQuantity(pid, productDaoImpl.getProductQuantityById(pid) + qty);
-			response.sendRedirect("cart.jsp");
+			response.sendRedirect("views/user/cart.jsp");
 		}
 		
 	}

@@ -38,24 +38,24 @@ public class ChangePasswordController extends HttpServlet {
 				
 				Message message = new Message("Chúng tôi đã gửi mã đặt lại mật khẩu tới "+email, "success", "alert-success");
 				session.setAttribute("message", message);
-				response.sendRedirect("otp_code.jsp");
+				response.sendRedirect("views/otp_code.jsp");
 			}else {
 				Message message = new Message("Email không tồn tại! Thử lại với Email khác!", "error", "alert-danger");
 				session.setAttribute("message", message);
-				response.sendRedirect("forgot_password.jsp");
+				response.sendRedirect("views/forgot_password.jsp");
 				return;
 			}
-		}else if(referrer.contains("otp_code")) {
+		}else if(referrer.contains("otp_code") && session.getAttribute("otp")!=null) {
 			int code = Integer.parseInt(request.getParameter("code"));
-			int otp = (int)session.getAttribute("otp");
+			int otp = (int) session.getAttribute("otp");
                         System.out.println("OTP: " + otp);
 			if(code == otp) {
 				session.removeAttribute("otp");
-				response.sendRedirect("change_password.jsp");
+				response.sendRedirect("views/user/change_password.jsp");
 			}else {
 				Message message = new Message("Mã xác minh đã nhập không hợp lệ!", "error", "alert-danger");
 				session.setAttribute("message", message);
-				response.sendRedirect("otp_code.jsp");
+				response.sendRedirect("views/otp_code.jsp");
 				return;
 			}
 		}else if(referrer.contains("change_password")) {
@@ -66,7 +66,7 @@ public class ChangePasswordController extends HttpServlet {
 			
 			Message message = new Message("Mật khẩu đã được cập nhật thành công!", "error", "alert-success");
 			session.setAttribute("message", message);
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("views/login.jsp");
 		}
 	}
 

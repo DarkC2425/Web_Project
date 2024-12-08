@@ -15,7 +15,7 @@ User u2 = (User) session.getAttribute("activeUser");
 if (u2 == null) {
 	Message message = new Message("Bạn chưa đăng nhập! Đăng nhập trước!!", "error", "alert-danger");
 	session.setAttribute("message", message);
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("../login.jsp");
 	return;  
 }
 OrderDaoImpl orderDao = new OrderDaoImpl(DatabaseConnection.getConnection());
@@ -28,7 +28,7 @@ List<Order> orderList = orderDao.getAllOrderByUserId(u2.getUserId());
 	if (orderList == null || orderList.size() == 0) {
 	%>
 	<div class="container mt-5 mb-5 text-center">
-		<img src="Images/empty-cart.png" style="max-width: 200px;"
+		<img src="../../Images/empty-cart.png" style="max-width: 200px;"
 			class="img-fluid">
 		<h4 class="mt-3">Không tìm thấy đơn hàng nào</h4>
 		Có vẻ như bạn chưa đặt đơn hàng nào!

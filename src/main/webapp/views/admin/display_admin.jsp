@@ -26,7 +26,7 @@ List<Admin> adminList = adminDao.getAllAdmin();
 <head>
 <meta charset="UTF-8">
 <title>View Admin's</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 <style>
 label {
 	font-weight: bold;
@@ -42,14 +42,14 @@ label {
 				<div class="card">
 					<div class="card-body px-3">
 						<div class="container text-center">
-							<img src="Images/admin.png" style="max-width: 100px;"
+							<img src="../../Images/admin.png" style="max-width: 100px;"
 								class="img-fluid">
 						</div>
 						<h3 class="text-center">Thêm Admin</h3>
-						<%@include file="Components/alert_message.jsp"%>
+						<%@include file="../../Components/alert_message.jsp"%>
 
 						<!--admin-form-->
-						<form action="AdminController?operation=save" method="post">
+						<form action="../../AdminController?operation=save" method="post">
 							<div class="mb-3">
 								<label class="form-label">Tên</label> <input type="text"
 									name="name" placeholder="Enter name" class="form-control"
@@ -95,7 +95,7 @@ label {
 								<td><%=a.getName() %></td>
 								<td><%=a.getEmail() %></td>
 								<td><%=a.getPhone() %></td>
-								<td><a href="AdminController?operation=delete&id=<%=a.getId()%>" role="button" class="btn btn-danger">Xóa</a></td>
+								<td><a href="../../AdminController?operation=delete&id=<%=a.getId()%>" role="button" class="btn btn-danger">Xóa</a></td>
 							</tr>
 							<%
 							}

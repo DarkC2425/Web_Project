@@ -31,12 +31,12 @@ User user = (User) session.getAttribute("activeUser");
 <head>
 <meta charset="UTF-8">
 <title>Xem danh mục</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 </head>
 <body>
 	<!-- Category -->
 	<div class="container mt-3">
-	<%@include file="Components/alert_message.jsp"%>
+	<%@include file="../../Components/alert_message.jsp"%>
 		<table class="table table-hover">
 			<tr class="table-primary text-center" style="font-size: 20px;">
 				<th>Ảnh</th>
@@ -47,11 +47,11 @@ User user = (User) session.getAttribute("activeUser");
 			for (Category c : categoryList) {
 			%>
 			<tr class="text-center">
-				<td><img src="Product_imgs\<%=c.getCategoryImage()%>"
+				<td><img src="../../Product_imgs\<%=c.getCategoryImage()%>"
 					style="width: 60px; height: 60px; width: auto;"></td>
 				<td><%=c.getCategoryName()%></td>
 				<td><a href="update_category.jsp?cid=<%=c.getCategoryId()%>" role="button" class="btn btn-secondary">Cập nhật</a>&emsp;<a
-					href="AddOperationController?cid=<%=c.getCategoryId()%>&operation=deleteCategory"
+					href="../../AddOperationController?cid=<%=c.getCategoryId()%>&operation=deleteCategory"
 					class="btn btn-danger" role="button">Xóa</a></td>
 			</tr>
 			<%

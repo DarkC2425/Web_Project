@@ -29,7 +29,7 @@ public class UpdateOrderController extends HttpServlet {
 			MailMessenger.orderShipped(userDao.getUserName(order.getUserId()), userDao.getUserEmail(order.getUserId()),
 					order.getOrderId(), order.getDate().toString());
 		}
-		response.sendRedirect("display_orders.jsp");
+		response.sendRedirect("views/admin/display_orders.jsp");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

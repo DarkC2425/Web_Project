@@ -37,12 +37,12 @@ User user = (User) session.getAttribute("activeUser");
     <head>
         <meta charset="UTF-8">
         <title>Xem sản phẩm</title>
-        <%@include file="Components/common_css_js.jsp"%>
+        <%@include file="../../Components/common_css_js.jsp"%>
     </head>
     <body>
         <!-- update product -->
         <div class="container mt-3">
-            <%@include file="Components/alert_message.jsp"%>
+            <%@include file="../../Components/alert_message.jsp"%>
             <table class="table table-hover">
                 <tr class="table-primary text-center" style="font-size: 20px;">
                     <th>Ảnh</th>
@@ -66,8 +66,8 @@ User user = (User) session.getAttribute("activeUser");
                     <td><%=prod.getProductPriceAfterDiscount()%>&#8363;</td>
                     <td><%=prod.getProductQunatity()%></td>
                     <td><%=prod.getProductDiscount()%>%</td>
-                    <td><a href="update_product.jsp?pid=<%=prod.getProductId()%>" role="button" class="btn btn-secondary">Cập nhật</a>&emsp;<a
-                            href="AddOperationController?pid=<%=prod.getProductId()%>&operation=deleteProduct"
+                    <td><a href="../../update_product.jsp?pid=<%=prod.getProductId()%>" role="button" class="btn btn-secondary">Cập nhật</a>&emsp;<a
+                            href="../../AddOperationController?pid=<%=prod.getProductId()%>&operation=deleteProduct"
                             class="btn btn-danger" role="button">Xóa</a></td>
                 </tr>
                 <%

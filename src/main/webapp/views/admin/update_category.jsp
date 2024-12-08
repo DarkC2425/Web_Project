@@ -32,7 +32,7 @@ if (activeAdmin == null) {
 <head>
 <meta charset="UTF-8">
 <title>Cập nhật danh mục</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 </head>
 <body>
 
@@ -48,7 +48,7 @@ if (activeAdmin == null) {
 					<div class="card-header text-center">
 						<h3>Chỉnh sửa danh mục</h3>
 					</div>
-					<form action="AddOperationController?cid=<%=cid%>" method="post"
+					<form action="../../AddOperationController?cid=<%=cid%>" method="post"
 						enctype="multipart/form-data">
 						<div class="card-body">
 							<input type="hidden" name="operation" value="updateCategory">
@@ -63,7 +63,7 @@ if (activeAdmin == null) {
 							</div>
 							<div class="mb-3">
 								<label class="form-label"><b>Ảnh đã tải lên:&nbsp;</b></label><%=category.getCategoryImage()%>
-								&emsp;<img src="Product_imgs\<%=category.getCategoryImage()%>"
+								&emsp;<img src="../../Product_imgs\<%=category.getCategoryImage()%>"
 									style="width: 80px; height: 80px; width: auto;"> <input
 									type="hidden" name="image"
 									value="<%=category.getCategoryImage()%>">

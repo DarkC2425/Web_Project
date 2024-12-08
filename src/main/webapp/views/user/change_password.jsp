@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Tạo mật khẩu mới</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 <style>
 label {
 	font-weight: bold;
@@ -36,7 +36,7 @@ label {
 								class="img-fluid">
 						</div>
 						<h3 class="text-center mt-3">Cập nhật mật khẩu</h3>
-						<%@include file="Components/alert_message.jsp"%>
+						<%@include file="../../Components/alert_message.jsp"%>
 
 						<form action="ChangePasswordController" method="post">
 							<div class="mb-3 mt-3">

@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
 				} else {
 					Message message = new Message("Tài khoản hoặc mật khẩu sai! Thử lại!!", "error", "alert-danger");
 					session.setAttribute("message", message);
-					response.sendRedirect("login.jsp");
+					response.sendRedirect("views/login.jsp");
 					return;
 				}
 
@@ -57,11 +57,11 @@ public class LoginController extends HttpServlet {
 				HttpSession session = request.getSession();
 				if (admin != null) {
 					session.setAttribute("activeAdmin", admin);
-					response.sendRedirect("admin.jsp");
+					response.sendRedirect("views/admin/admin.jsp");
 				} else {
 					Message message = new Message("Tài khoản hoặc mật khẩu sai! Thử lại!!", "error", "alert-danger");
 					session.setAttribute("message", message);
-					response.sendRedirect("adminlogin.jsp");
+					response.sendRedirect("views/admin/admin.jsp");
 					return;
 				}
 			} catch (Exception e) {

@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+log("running");
 User u = (User) session.getAttribute("activeUser");
 WishlistDaoImpl wishlistDao = new WishlistDaoImpl(DatabaseConnection.getConnection());
 
@@ -39,17 +40,18 @@ if (searchKey != null) {
 }
 
 if (prodList != null && prodList.size() == 0) {
-	message = "Không có hàng hóa nào có sẵn cho \""
+	message = "Không có sản phẩm nào cho \""
 	+ (searchKey != null ? searchKey : categoryDao.getCategoryName(Integer.parseInt(catId.trim()))) + "\"";
 	prodList = productDao.getProductsByPage(currentPage);
-}
+	totalPages = (int) Math.ceil((double) productDao.productCount() / 20);
+}log(""+prodList.size());
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Sản phẩm</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 <style>
 .real-price {
 	font-size: 22px !important;

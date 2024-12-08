@@ -30,7 +30,7 @@ UserDaoImpl userDao = new UserDaoImpl(DatabaseConnection.getConnection());
 <head>
 <meta charset="UTF-8">
 <title>Xem đơn hàng</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 </head>
 <body>
 	<!-- order details -->
@@ -40,7 +40,7 @@ UserDaoImpl userDao = new UserDaoImpl(DatabaseConnection.getConnection());
 		if (orderList == null || orderList.size() == 0) {
 		%>
 		<div class="container mt-5 mb-5 text-center">
-			<img src="Images/empty-cart.png" style="max-width: 200px;"
+			<img src="../../Images/empty-cart.png" style="max-width: 200px;"
 				class="img-fluid">
 			<h4 class="mt-3">Không tìm thấy đơn hàng</h4>
 		</div>
@@ -61,10 +61,10 @@ UserDaoImpl userDao = new UserDaoImpl(DatabaseConnection.getConnection());
 				</tr>
 				<%
 				for (Order order : orderList) {
-					List<OrderedProduct> ordProdList = ordProdDao.getAllOrderedProduct(order.getId());
+					List<OrderedProduct> ordProdList = ordProdDao.getAllOrderedProduct(order.getOrderId());
 					for (OrderedProduct orderProduct : ordProdList) {
 				%>
-				<form action="UpdateOrderController?oid=<%=order.getId()%>" method="post">
+				<form action="../../UpdateOrderController?oid=<%=order.getId()%>" method="post">
 			<tr>
 					<td class="text-center"><img
 						src="https://<%=orderProduct.getImage()%>"

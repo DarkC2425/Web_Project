@@ -7,7 +7,7 @@ User user1 = (User) session.getAttribute("activeUser");
 if (user1 == null) {
 	Message message = new Message("Bạn chưa đăng nhập! Đăng nhập trước!!", "error", "alert-danger");
 	session.setAttribute("message", message);
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("../login.jsp");
 	return;
 }
 %>

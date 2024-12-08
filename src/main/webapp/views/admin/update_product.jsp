@@ -34,7 +34,7 @@ if (activeAdmin == null) {
 <head>
 <meta charset="UTF-8">
 <title>Cập nhật sản phẩm</title>
-<%@include file="Components/common_css_js.jsp"%>
+<%@include file="../../Components/common_css_js.jsp"%>
 </head>
 <body>
 
