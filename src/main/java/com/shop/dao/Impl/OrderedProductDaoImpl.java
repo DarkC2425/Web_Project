@@ -26,7 +26,7 @@ public class OrderedProductDaoImpl implements IOrderedProductDao{
 			psmt.setInt(2, ordProduct.getQuantity());
 			psmt.setFloat(3,ordProduct.getPrice());
 			psmt.setString(4, ordProduct.getImage());
-			psmt.setInt(5, ordProduct.getOrderId());
+			psmt.setString(5, ordProduct.getOrderId());
 
 			psmt.executeUpdate();
 
@@ -34,12 +34,12 @@ public class OrderedProductDaoImpl implements IOrderedProductDao{
 			e.printStackTrace();
 		}
 	}
-	public List<OrderedProduct> getAllOrderedProduct(int oid){
+	public List<OrderedProduct> getAllOrderedProduct(String oid){
 		List<OrderedProduct> list = new ArrayList<OrderedProduct>();
 		try {
 			String query = "select * from ordered_product where orderid = ?";
 			PreparedStatement psmt = this.con.prepareStatement(query);
-			psmt.setInt(1, oid);
+			psmt.setString(1, oid);
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
 				OrderedProduct orderProd = new OrderedProduct();
@@ -48,12 +48,12 @@ public class OrderedProductDaoImpl implements IOrderedProductDao{
 				orderProd.setPrice(rs.getFloat("price"));
 				orderProd.setImage(rs.getString("image"));
 				orderProd.setOrderId(oid);
-
-				list.add(orderProd);
+				list.add(orderProd);	
 			}
+			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return list;
+		return null;
 	}
 }

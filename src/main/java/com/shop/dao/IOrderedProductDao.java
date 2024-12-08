@@ -7,5 +7,5 @@ import com.shop.model.OrderedProduct;
 public interface IOrderedProductDao {
 	public void insertOrderedProduct(OrderedProduct ordProduct);
 
-	public List<OrderedProduct> getAllOrderedProduct(int oid);
+	public List<OrderedProduct> getAllOrderedProduct(String oid);
 }

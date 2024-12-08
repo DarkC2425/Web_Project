@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="com.shop.model.Message"%>
 <%@page import="com.shop.model.Product"%>
 <%@page import="com.shop.dao.Impl.ProductDaoImpl"%>
@@ -20,6 +21,7 @@ if (u1 == null) {
 }
 WishlistDaoImpl wishListDao = new WishlistDaoImpl(DatabaseConnection.getConnection());
 List<Wishlist> wlist = wishListDao.getListByUserId(u1.getUserId());
+log("wishlist = " + wlist.size());
 ProductDaoImpl pDao = new ProductDaoImpl(DatabaseConnection.getConnection());
 %>
 <div class="container px-3 py-3">

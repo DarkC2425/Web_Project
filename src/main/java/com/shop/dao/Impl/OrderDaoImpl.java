@@ -22,7 +22,7 @@ public class OrderDaoImpl implements IOrderDao {
 	public int insertOrder(Order order) {
 		int id = 0;
 		try {
-			String query = "insert into `orders`(orderid, status, paymentType, userId, date) values(?, ?, ?, ?, ?)";
+			String query = "insert into [orders] (orderid, status, paymentType, userId, date) values(?, ?, ?, ?, ?)";
 			PreparedStatement psmt = this.con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			
 			psmt.setString(1, order.getOrderId());
@@ -51,7 +51,7 @@ public class OrderDaoImpl implements IOrderDao {
 	public List<Order> getAllOrderByUserId(int uid){
 		List<Order> list = new ArrayList<Order>();
 		try {
-			String query = "select * from `orders` where userId = ?";
+			String query = "select * from [orders] where userId = ?";
 			PreparedStatement psmt = this.con.prepareStatement(query);
 			psmt.setInt(1, uid);
 			ResultSet rs = psmt.executeQuery();
@@ -74,7 +74,7 @@ public class OrderDaoImpl implements IOrderDao {
 	public Order getOrderById(int id){
 		Order order = new Order();
 		try {
-			String query = "select * from `orders` where id = ?";
+			String query = "select * from [orders] where id = ?";
 			PreparedStatement psmt = this.con.prepareStatement(query);
 			psmt.setInt(1, id);
 			ResultSet rs = psmt.executeQuery();
@@ -94,7 +94,7 @@ public class OrderDaoImpl implements IOrderDao {
 	public List<Order> getAllOrder(){
 		List<Order> list = new ArrayList<Order>();
 		try {
-			String query = "select * from `orders`";
+			String query = "select * from [orders]";
 			Statement statement = this.con.createStatement();
 			ResultSet rs = statement.executeQuery(query);
 			while (rs.next()) {
@@ -115,7 +115,7 @@ public class OrderDaoImpl implements IOrderDao {
 	}
 	public void updateOrderStatus(int oid, String status) {
 		try {
-			String query = "update `orders` set status = ? where id = ?";
+			String query = "update [orders] set status = ? where id = ?";
 			PreparedStatement psmt = this.con.prepareStatement(query);
 			psmt.setString(1, status);
 			psmt.setInt(2, oid);

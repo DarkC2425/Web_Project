@@ -68,10 +68,11 @@ public class WishlistDaoImpl implements IWishlistDao {
 				wishlist.setProductId(rs.getInt("idproduct"));
 				list.add(wishlist);
 			}
+			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return list;
+		return null;
 	}
 	@Override
 	public void deleteWishlist(int uid, int pid) {

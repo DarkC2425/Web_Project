@@ -129,7 +129,6 @@ public class ProductDaoImpl implements IProductDao{
             psmt.setInt(1, pid);
             ResultSet rs = psmt.executeQuery();
             rs.next();
-
             product.setProductId(rs.getInt("pid"));
             product.setProductName(rs.getString("name"));
             product.setProductDescription(rs.getString("description"));

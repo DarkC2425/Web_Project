@@ -44,7 +44,7 @@ public class OrderOperationController extends HttpServlet {
 
                 Order order = new Order(orderId, status, java.sql.Timestamp.valueOf(orderDateTime), paymentType, user.getUserId());
                 OrderDaoImpl orderDaoImpl = new OrderDaoImpl(DatabaseConnection.getConnection());
-                int id = orderDaoImpl.insertOrder(order);
+                orderDaoImpl.insertOrder(order);
 
                 CartDaoImpl cartDaoImpl = new CartDaoImpl(DatabaseConnection.getConnection());
                 List<Cart> listOfCart = cartDaoImpl.getCartListByUserId(user.getUserId());
@@ -58,7 +58,7 @@ public class OrderOperationController extends HttpServlet {
                     float price = prod.getProductPriceAfterDiscount();
                     String image = prod.getProductImages();
 
-                    OrderedProduct orderedProduct = new OrderedProduct(prodName, prodQty, price, image, id);
+                    OrderedProduct orderedProduct = new OrderedProduct(prodName, prodQty, price, image, orderId);
                     orderedProductDaoImpl.insertOrderedProduct(orderedProduct);
                 }
                 session.removeAttribute("from");
@@ -87,7 +87,7 @@ public class OrderOperationController extends HttpServlet {
                 float price = prod.getProductPriceAfterDiscount();
                 String image = prod.getProductImages();
 
-                OrderedProduct orderedProduct = new OrderedProduct(prodName, prodQty, price, image, id);
+                OrderedProduct orderedProduct = new OrderedProduct(prodName, prodQty, price, image, orderId);
                 orderedProductDaoImpl.insertOrderedProduct(orderedProduct);
 
                 //updating(decreasing) quantity of product in database

@@ -7,13 +7,13 @@ public class OrderedProduct {
 	private int quantity;
 	private float price;
 	private String image;
-	private int orderId;
+	private String orderId;
 	
 	public OrderedProduct() {
 		super();
 	}
 
-	public OrderedProduct(String name, int quantity, float price, String image, int orderId) {
+	public OrderedProduct(String name, int quantity, float price, String image, String orderId) {
 		super();
 		this.name = name;
 		this.quantity = quantity;
@@ -62,11 +62,11 @@ public class OrderedProduct {
 		this.image = image;
 	}
 
-	public int getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	
