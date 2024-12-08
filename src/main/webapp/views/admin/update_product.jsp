@@ -107,7 +107,7 @@ if (activeAdmin == null) {
 							</div>
 							<div class="mb-3">
 								<label class="form-label"><b>Ảnh tải lên:&nbsp;</b></label><%=product.getProductImages()%>
-								&emsp;<img src="https://<%=product.getProductImages()%>"
+								&emsp;<img src="http://localhost:8080/DoAnCuoiKy/Product_imgs/<%=product.getProductImages()%>"
 									style="width: 80px; height: 80px; width: auto;"> <input
 									type="hidden" name="image"
 									value="<%=product.getProductImages()%>">

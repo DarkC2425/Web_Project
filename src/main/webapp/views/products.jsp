@@ -96,7 +96,7 @@ if (prodList != null && prodList.size() == 0) {
 			<div class="col">
 				<div class="card h-100 px-2 py-2">
 					<div class="container text-center">
-						<img src="https://<%=p.getProductImages()%>"
+						<img src="http://localhost:8080/DoAnCuoiKy/Product_imgs/<%=p.getProductImages()%>"
 							class="card-img-top m-2"
 							style="max-width: 100%; max-height: 200px; width: auto;">
 						<div class="wishlist-icon">

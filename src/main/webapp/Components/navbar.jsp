@@ -85,7 +85,7 @@ User user = (User) session.getAttribute("activeUser");
     if (admin != null) {
     %>
     <div class="container">
-        <a class="navbar-brand" href="admin.jsp"><i
+        <a class="navbar-brand" href="http://localhost:8080/DoAnCuoiKy/views/admin/admin.jsp"><i
                 class="fa-sharp fa-solid fa-house" style="color: #ffffff;"></i>&ensp;2NT</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
@@ -106,7 +106,7 @@ User user = (User) session.getAttribute("activeUser");
                     <li class="nav-item"><a class="nav-link" aria-current="page"
                                             href="admin.jsp"><%=admin.getName()%></a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page"
-                                            href="../../LogoutController?user=admin"><i
+                                            href="http://localhost:8080/DoAnCuoiKy/LogoutController?user=admin"><i
                                 class="fa-solid fa-user-slash fa-sm" style="color: #aaf9ff;"></i>&nbsp;Đăng xuất</a></li>
                 </ul>
             </div>
@@ -205,7 +205,7 @@ User user = (User) session.getAttribute("activeUser");
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                     </div>
-                    <form action="../../AddOperationController" method="post"
+                    <form action="http://localhost:8080/DoAnCuoiKy/AddOperationController" method="post"
                           enctype="multipart/form-data">
                         <div class="modal-body">
                             <input type="hidden" name="operation" value="addCategory">
@@ -241,7 +241,7 @@ User user = (User) session.getAttribute("activeUser");
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                     </div>
-                    <form action="../../AddOperationController" method="post"
+                    <form action="http://localhost:8080/DoAnCuoiKy/AddOperationController" method="post"
                           name="addProductForm" enctype="multipart/form-data">
                         <div class="modal-body">
                             <input type="hidden" name="operation" value="addProduct">

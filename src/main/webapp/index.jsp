@@ -137,7 +137,7 @@ User user = (User) session.getAttribute("activeUser");
 					<div class="card h-100">
 						<div class="container text-center">
 							<img
-								src="https://<%=productList.get(i).getProductImages()%>"
+								src="http://localhost:8080/DoAnCuoiKy/Product_imgs/<%=productList.get(i).getProductImages()%>"
 								class="card-img-top m-2"
 								style="max-width: 100%; max-height: 200px; width: auto;">
 						</div>
@@ -183,7 +183,7 @@ User user = (User) session.getAttribute("activeUser");
 					<div class="card h-100 shadow-sm">
 						<div class="text-center p-3">
 							<img
-								src="https://<%= productList.get(i).getProductImages() %>"
+								src="http://localhost:8080/DoAnCuoiKy/Product_imgs/<%= productList.get(i).getProductImages() %>"
 								alt="<%= productList.get(i).getProductName() %>"
 								class="img-fluid rounded"
 								style="max-height: 200px; object-fit: cover;">
@@ -225,7 +225,7 @@ User user = (User) session.getAttribute("activeUser");
                        style="text-decoration: none;">
                         <div class="card h-100">
                             <div class="container text-center">
-                                <img src="https://<%=topDeals.get(i).getProductImages()%>"
+                                <img src="http://localhost:8080/DoAnCuoiKy/Product_imgs/<%=topDeals.get(i).getProductImages()%>"
                                      class="card-img-top m-2"
                                      style="max-width: 100%; max-height: 200px; width: auto;">
                             </div>

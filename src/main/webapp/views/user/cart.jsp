@@ -90,7 +90,7 @@ List<Category> categoryList = catDao.getAllCategories();
 						Product prod = productDao.getProductsByProductId(c.getProductId());
 					%>
 					<tr class="text-center">
-						<td><img src="https://<%=prod.getProductImages()%>"
+						<td><img src="http://localhost:8080/DoAnCuoiKy/Product_imgs/<%=prod.getProductImages()%>"
 							style="width: 50px; height: 50px; width: auto;"></td>
 						<td class="text-start"><%=prod.getProductName()%></td>
 						<td><%=prod.getProductPriceAfterDiscount()%>&#8363;</td>

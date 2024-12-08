@@ -54,7 +54,7 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 		<div class="row border border-3">
 			<div class="col-md-6">
 				<div class="container-fluid text-end my-3">
-					<img src="https://<%=product.getProductImages()%>"
+					<img src="http://localhost:8080/DoAnCuoiKy/Product_imgs/<%=product.getProductImages()%>"
 						class="card-img-top"
 						style="max-width: 100%; max-height: 500px; width: auto;">
 				</div>

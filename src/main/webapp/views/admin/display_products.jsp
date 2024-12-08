@@ -58,7 +58,7 @@ User user = (User) session.getAttribute("activeUser");
                         String category = catDao.getCategoryName(prod.getCategoryId());
                 %>
                 <tr class="text-center">
-                    <td><img src="https://<%=prod.getProductImages()%>"
+                    <td><img src="http://localhost:8080/DoAnCuoiKy/Product_imgs/<%=prod.getProductImages()%>"
                              style="width: 60px; height: 60px; width: auto;"></td>
                     <td class="text-start"><%=prod.getProductName()%></td>
                     
