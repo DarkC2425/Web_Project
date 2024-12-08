@@ -21,8 +21,8 @@ public class SendMailService {
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.port", "587");
 
-        String emailId = "haotrung123test@gmail.com"; 	     // admin/company mail-id
-        String password = "ekktlyrstylcghkj";		// generated password
+        String emailId = "tungtungwork7275@gmail.com"; 	     // admin/company mail-id
+        String password = "dtiu hdey aelf eorf";		// generated password
 
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
