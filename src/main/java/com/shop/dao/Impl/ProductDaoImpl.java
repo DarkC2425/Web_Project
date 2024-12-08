@@ -92,6 +92,34 @@ public class ProductDaoImpl implements IProductDao{
         }
         return list;
     }
+    public List<Product> getProductsByPage(int page) {
+        List<Product> list = new ArrayList<Product>();
+        int begin = page * 20 - 20;
+        int end = page * 20;
+        try {
+            String query = "select * from product ORDER BY pid OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+            PreparedStatement psmt = this.con.prepareStatement(query);
+            psmt.setInt(1, begin);
+            psmt.setInt(2, end);
+            ResultSet rs = psmt.executeQuery();
+            while (rs.next()) {
+                Product product = new Product();
+                product.setProductId(rs.getInt("pid"));
+                product.setProductName(rs.getString("name"));
+                product.setProductDescription(rs.getString("description"));
+                product.setProductPrice(rs.getFloat("price"));
+                product.setProductQunatity(rs.getInt("quantity"));
+                product.setProductDiscount(rs.getInt("discount"));
+                product.setProductImages(rs.getString("image"));
+                product.setCategoryId(rs.getInt("cid"));
+
+                list.add(product);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     public Product getProductsByProductId(int pid) {
         Product product = new Product();
@@ -117,12 +145,16 @@ public class ProductDaoImpl implements IProductDao{
         return product;
     }
 
-    public List<Product> getAllProductsByCategoryId(int catId) {
+    public List<Product> getAllProductsByCategoryId(int catId, int page) {
         List<Product> list = new ArrayList<Product>();
+        int begin = page * 20 - 20;
+        int end = page * 20;
         try {
-            String query = "select * from product where cid = ?";
+            String query = "select * from product where cid = ? ORDER BY pid OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
             PreparedStatement psmt = this.con.prepareStatement(query);
             psmt.setInt(1, catId);
+            psmt.setInt(2, begin);
+            psmt.setInt(3, end);
             ResultSet rs = psmt.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
@@ -142,16 +174,33 @@ public class ProductDaoImpl implements IProductDao{
         }
         return list;
     }
-
-    public List<Product> getAllProductsBySearchKey(String search) {
-        List<Product> list = new ArrayList<Product>();
+    public int productCountByCategoryId(int catId) {
+        int count = 0;
         try {
-            String query = "select * from product where lower(name) like ? or lower(description) like ?";
+            String query = "select count(*) from product where cid = ?";
+            PreparedStatement psmt = this.con.prepareStatement(query);
+            psmt.setInt(1, catId);
+            ResultSet rs = psmt.executeQuery();
+            rs.next();
+            count = rs.getInt(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    public List<Product> getAllProductsBySearchKey(String search, int page) {
+        List<Product> list = new ArrayList<Product>();
+        int begin = page * 20 - 20;
+        int end = page * 20;
+        try {
+            String query = "select * from product where lower(name) like ? or lower(description) like ? ORDER BY pid OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
             PreparedStatement psmt = this.con.prepareStatement(query);
             search = "%" + search + "%";
             psmt.setString(1, search);
             psmt.setString(2, search);
-
+            psmt.setInt(3, begin);
+            psmt.setInt(4, end);
             ResultSet rs = psmt.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
@@ -171,7 +220,21 @@ public class ProductDaoImpl implements IProductDao{
         }
         return list;
     }
-
+    public int productCountBySearchKey(String search) {
+        int count = 0;
+        try {
+            String query = "select count(*) from product where lower(name) like ? or lower(description) like ?";
+            PreparedStatement psmt = this.con.prepareStatement(query);
+            psmt.setString(1, search);
+            psmt.setString(2, search);
+            ResultSet rs = psmt.executeQuery();
+            rs.next();
+            count = rs.getInt(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
     public List<Product> getDiscountedProducts() {
         List<Product> list = new ArrayList<Product>();
         try {
@@ -256,6 +319,7 @@ public class ProductDaoImpl implements IProductDao{
         }
         return count;
     }
+    
 
     public float getProductPriceById(int pid) {
         float price = 0;

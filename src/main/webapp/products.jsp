@@ -18,28 +18,30 @@ String message = "";
 
 ProductDaoImpl productDao = new ProductDaoImpl(DatabaseConnection.getConnection());
 List<Product> prodList = null;
+int totalPages = 1;
+int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
 if (searchKey != null) {
 	if (!searchKey.isEmpty()) {
 		message = "Hiển thị kết quả cho \"" + searchKey + "\"";
 	} else {
 		message = "Không tìm thấy sản phẩm!";
 	}
-	prodList = productDao.getAllProductsBySearchKey(searchKey);
-
+	prodList = productDao.getAllProductsBySearchKey(searchKey, currentPage);
+	totalPages = (int) Math.ceil((double) productDao.productCountBySearchKey(searchKey) / 20);
 } else if (catId != null && !(catId.trim().equals("0"))) {
-	prodList = productDao.getAllProductsByCategoryId(Integer.parseInt(catId.trim()));
+	prodList = productDao.getAllProductsByCategoryId(Integer.parseInt(catId.trim()), currentPage);
 	message = "Hiển thị kết quả cho \"" + categoryDao.getCategoryName(Integer.parseInt(catId.trim())) + "\"";
+	totalPages = (int) Math.ceil((double) productDao.productCountByCategoryId(Integer.parseInt(catId.trim())) / 20);
 } else {
-	prodList = productDao.getAllProducts();
+	prodList = productDao.getProductsByPage(currentPage);
 	message = "Tất cả hàng hóa";
+	totalPages = (int) Math.ceil((double) productDao.productCount() / 20);
 }
 
 if (prodList != null && prodList.size() == 0) {
-
 	message = "Không có hàng hóa nào có sẵn cho \""
 	+ (searchKey != null ? searchKey : categoryDao.getCategoryName(Integer.parseInt(catId.trim()))) + "\"";
-
-	prodList = productDao.getAllProducts();
+	prodList = productDao.getProductsByPage(currentPage);
 }
 %>
 <!DOCTYPE html>
@@ -87,20 +89,12 @@ if (prodList != null && prodList.size() == 0) {
 	<div class="container-fluid my-3 px-5">
 		<div class="row row-cols-1 row-cols-md-4 g-3">
 			<%
-			int itemsPerPage = 10;
-			int totalProducts = prodList.size();
-			int totalPages = (int) Math.ceil((double) totalProducts / itemsPerPage);
-			int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
-			int startIndex = (currentPage - 1) * itemsPerPage;
-			int endIndex = Math.min(startIndex + itemsPerPage, totalProducts);
-
-			List<Product> paginatedList = prodList.subList(startIndex, endIndex);
-			for (Product p : paginatedList) {
+			for (Product p : prodList) {
 			%>
 			<div class="col">
 				<div class="card h-100 px-2 py-2">
 					<div class="container text-center">
-						<img src="Product_imgs/<%=p.getProductImages()%>"
+						<img src="https://<%=p.getProductImages()%>"
 							class="card-img-top m-2"
 							style="max-width: 100%; max-height: 200px; width: auto;">
 						<div class="wishlist-icon">
@@ -170,7 +164,11 @@ if (prodList != null && prodList.size() == 0) {
 					for (int i = 1; i <= totalPages; i++) {
 					%>
 					<li class="page-item <%=(i == currentPage) ? "active" : ""%>">
-						<a class="page-link" href="?page=<%=i%>"><%=i%></a>
+						<a class="page-link"
+						href="?page=<%=i%><%=(request.getParameter("search") != null) ? "&search=" + request.getParameter("search")
+		: (request.getParameter("category") != null) ? "&category=" + request.getParameter("category") : ""%>">
+							<%=i%>
+					</a>
 					</li>
 					<%
 					}

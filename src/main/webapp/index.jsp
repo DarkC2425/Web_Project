@@ -63,14 +63,16 @@ User user = (User) session.getAttribute("activeUser");
 		style="background-color: #e3f7fc;">
 		<div class="row">
 			<div class="card-group">
-				<%                                    for (Category c : categoryList) {
+				<%
+				int numberProducts = 1;
+				for (Category c : categoryList) {
                     %>
 				<div class="col text-center">
 					<a href="products.jsp?category=<%=c.getCategoryId()%>"
 						style="text-decoration: none;">
 						<div class="card cus-card h-100">
 							<div class="container text-center">
-								<img src="Product_imgs\<%=c.getCategoryImage()%>" class="mt-3 "
+								<img src="Product_imgs/<%=c.getCategoryImage()%>" class="mt-3 "
 									style="max-width: 100%; max-height: 100px; width: auto; height: auto;">
 							</div>
 							<h6><%=c.getCategoryName()%></h6>
@@ -79,6 +81,8 @@ User user = (User) session.getAttribute("activeUser");
 				</div>
 
 				<%
+				numberProducts++;
+					if(numberProducts>=10) break;
                         }
                     %>
 			</div>
@@ -133,7 +137,7 @@ User user = (User) session.getAttribute("activeUser");
 					<div class="card h-100">
 						<div class="container text-center">
 							<img
-								src="Product_imgs\<%=productList.get(i).getProductImages()%>"
+								src="https://<%=productList.get(i).getProductImages()%>"
 								class="card-img-top m-2"
 								style="max-width: 100%; max-height: 200px; width: auto;">
 						</div>
@@ -166,7 +170,7 @@ User user = (User) session.getAttribute("activeUser");
 		<!-- Bắt đầu danh sách sản phẩm -->
 		<div
 			class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
-			
+
 
 			<!-- Hiển thị danh sách sản phẩm từ productList -->
 			<% 
@@ -179,7 +183,7 @@ User user = (User) session.getAttribute("activeUser");
 					<div class="card h-100 shadow-sm">
 						<div class="text-center p-3">
 							<img
-								src="Product_imgs/<%= productList.get(i).getProductImages() %>"
+								src="https://<%= productList.get(i).getProductImages() %>"
 								alt="<%= productList.get(i).getProductName() %>"
 								class="img-fluid rounded"
 								style="max-height: 200px; object-fit: cover;">
@@ -221,7 +225,7 @@ User user = (User) session.getAttribute("activeUser");
                        style="text-decoration: none;">
                         <div class="card h-100">
                             <div class="container text-center">
-                                <img src="Product_imgs\<%=topDeals.get(i).getProductImages()%>"
+                                <img src="https://<%=topDeals.get(i).getProductImages()%>"
                                      class="card-img-top m-2"
                                      style="max-width: 100%; max-height: 200px; width: auto;">
                             </div>

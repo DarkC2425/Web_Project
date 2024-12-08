@@ -9,13 +9,15 @@ public interface IProductDao {
 
 	public List<Product> getAllProducts();
 
+	public List<Product> getProductsByPage(int page);
+
 	public List<Product> getAllLatestProducts();
 
 	public Product getProductsByProductId(int pid);
 
-	public List<Product> getAllProductsByCategoryId(int catId);
+	public List<Product> getAllProductsByCategoryId(int catId, int page);
 
-	public List<Product> getAllProductsBySearchKey(String search);
+	public List<Product> getAllProductsBySearchKey(String search, int page);
 
 	public List<Product> getDiscountedProducts();
 

@@ -67,7 +67,7 @@ UserDaoImpl userDao = new UserDaoImpl(DatabaseConnection.getConnection());
 				<form action="UpdateOrderController?oid=<%=order.getId()%>" method="post">
 			<tr>
 					<td class="text-center"><img
-						src="Product_imgs\<%=orderProduct.getImage()%>"
+						src="https://<%=orderProduct.getImage()%>"
 						style="width: 50px; height: 50px; width: auto;"></td>
 					<td><%=order.getOrderId()%></td>
 					<td><%=orderProduct.getName()%><br>Số lượng: <%=orderProduct.getQuantity()%><br>Tổng tiền:
