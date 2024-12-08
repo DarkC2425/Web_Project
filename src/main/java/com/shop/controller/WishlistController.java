@@ -26,13 +26,13 @@ public class WishlistController extends HttpServlet {
 		if (op.trim().equals("add")) {
 			Wishlist wishlist = new Wishlist(uid, pid);
 			wishlistDao.addToWishlist(wishlist);
-			response.sendRedirect("/views/products.jsp");
+			response.sendRedirect("views/products.jsp");
 		} else if (op.trim().equals("remove")) {
 			wishlistDao.deleteWishlist(uid, pid);
-			response.sendRedirect("products.jsp");
+			response.sendRedirect("views/products.jsp");
 		}else if(op.trim().equals("delete")) {
 			wishlistDao.deleteWishlist(uid, pid);
-			response.sendRedirect("/views/user/profile.jsp");
+			response.sendRedirect("views/user/profile.jsp");
 		}
 	}
 

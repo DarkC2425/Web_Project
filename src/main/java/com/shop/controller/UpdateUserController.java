@@ -72,7 +72,7 @@ public class UpdateUserController extends HttpServlet {
 				session.setAttribute("activeUser", user);
 				Message message = new Message("Thông tin người dùng đã được cập nhật thành công!!", "success", "alert-success");
 				session.setAttribute("message", message);
-				response.sendRedirect("/views/user/profile.jsp");
+				response.sendRedirect("views/user/profile.jsp");
 
 			} catch (Exception e) {
 				e.printStackTrace();
