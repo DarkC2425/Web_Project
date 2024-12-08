@@ -178,7 +178,7 @@ User user = (User) session.getAttribute("activeUser");
         %>
 			<div class="col">
 				<a
-					href="viewProduct.jsp?pid=<%=productList.get(i).getProductId() %>"
+					href="views/viewProduct.jsp?pid=<%=productList.get(i).getProductId() %>"
 					class="text-decoration-none">
 					<div class="card h-100 shadow-sm">
 						<div class="text-center p-3">

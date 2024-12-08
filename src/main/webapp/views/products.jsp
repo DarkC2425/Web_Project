@@ -105,7 +105,7 @@ if (prodList != null && prodList.size() == 0) {
 								if (wishlistDao.getWishlist(u.getUserId(), p.getProductId())) {
 							%>
 							<button
-								onclick="window.open('WishlistController?uid=<%=u.getUserId()%>&pid=<%=p.getProductId()%>&op=remove', '_self')"
+								onclick="../window.open('WishlistController?uid=<%=u.getUserId()%>&pid=<%=p.getProductId()%>&op=remove', '_self')"
 								class="btn btn-link" type="submit">
 								<i class="fa-sharp fa-solid fa-heart" style="color: #ff0303;"></i>
 							</button>
@@ -113,7 +113,7 @@ if (prodList != null && prodList.size() == 0) {
 							} else {
 							%>
 							<button type="submit"
-								onclick="window.open('WishlistController?uid=<%=u.getUserId()%>&pid=<%=p.getProductId()%>&op=add', '_self')"
+								onclick="window.open('../WishlistController?uid=<%=u.getUserId()%>&pid=<%=p.getProductId()%>&op=add', '_self')"
 								class="btn btn-link">
 								<i class="fa-sharp fa-solid fa-heart" style="color: #909191;"></i>
 							</button>
