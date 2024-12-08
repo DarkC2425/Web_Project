@@ -19,7 +19,7 @@ label {
 </style>
 <div class="container px-3 py-3">
 	<h3>Thông tin cá nhân</h3>
-	<form id="update-user" action="UpdateUserController" method="post">
+	<form id="update-user" action="../../UpdateUserController" method="post">
 		<input type="hidden" name="operation" value="updateUser">
 		<div class="row">
 			<div class="col-md-6 mt-2">

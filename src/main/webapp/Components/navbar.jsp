@@ -205,7 +205,7 @@ User user = (User) session.getAttribute("activeUser");
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                     </div>
-                    <form action="AddOperationController" method="post"
+                    <form action="../../AddOperationController" method="post"
                           enctype="multipart/form-data">
                         <div class="modal-body">
                             <input type="hidden" name="operation" value="addCategory">
@@ -241,7 +241,7 @@ User user = (User) session.getAttribute("activeUser");
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                     </div>
-                    <form action="AddOperationController" method="post"
+                    <form action="../../AddOperationController" method="post"
                           name="addProductForm" enctype="multipart/form-data">
                         <div class="modal-body">
                             <input type="hidden" name="operation" value="addProduct">

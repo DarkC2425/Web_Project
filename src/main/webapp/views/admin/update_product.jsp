@@ -52,7 +52,7 @@ if (activeAdmin == null) {
 					<div class="card-header text-center">
 						<h3>Chỉnh sửa sản phẩm</h3>
 					</div>
-					<form action="AddOperationController?pid=<%=pid%>" method="post"
+					<form action="../../AddOperationController?pid=<%=pid%>" method="post"
 						name="updateProductForm" enctype="multipart/form-data">
 						<div class="card-body">
 							<input type="hidden" name="operation" value="updateProduct">

@@ -66,7 +66,7 @@ User user = (User) session.getAttribute("activeUser");
                     <td><%=prod.getProductPriceAfterDiscount()%>&#8363;</td>
                     <td><%=prod.getProductQunatity()%></td>
                     <td><%=prod.getProductDiscount()%>%</td>
-                    <td><a href="../../update_product.jsp?pid=<%=prod.getProductId()%>" role="button" class="btn btn-secondary">Cập nhật</a>&emsp;<a
+                    <td><a href="update_product.jsp?pid=<%=prod.getProductId()%>" role="button" class="btn btn-secondary">Cập nhật</a>&emsp;<a
                             href="../../AddOperationController?pid=<%=prod.getProductId()%>&operation=deleteProduct"
                             class="btn btn-danger" role="button">Xóa</a></td>
                 </tr>
