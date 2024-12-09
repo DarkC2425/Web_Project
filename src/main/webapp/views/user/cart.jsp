@@ -62,7 +62,7 @@ List<Category> categoryList = catDao.getAllCategories();
 			class="img-fluid">
 		<h4 class="mt-5">Giỏ hàng của bạn đang trống!</h4>
 		<p>Thêm hàng hóa ngay bây giờ.</p>
-		<a href="products.jsp" class="btn btn-primary btn-lg" role="button"
+		<a href="../products.jsp" class="btn btn-primary btn-lg" role="button"
 			aria-disabled="true">Cửa hàng bây giờ</a>
 	</div>
 	<%

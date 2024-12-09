@@ -13,6 +13,16 @@
 	</error-page>
 	<servlet>
 		<description />
+		<display-name>adminlogin</display-name>
+		<servlet-name>adminlogin</servlet-name>
+		<jsp-file>/views/admin/adminlogin.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminlogin</servlet-name>
+		<url-pattern>/adminlogin</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description />
 		<display-name>DatabaseConnection</display-name>
 		<servlet-name>DatabaseConnection</servlet-name>
 		<servlet-class>com.shop.util.DatabaseConnection</servlet-class>

@@ -20,7 +20,7 @@ public class LoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		String login = request.getParameter("login");
 		if (login.trim().equals("user")) {
 			try {
@@ -33,6 +33,7 @@ public class LoginController extends HttpServlet {
 
 				// storing current user in session
 				HttpSession session = request.getSession();
+				session.removeAttribute("activeAdmin");
 				if (user != null) {
 					session.setAttribute("activeUser", user);
 					response.sendRedirect("index.jsp");
@@ -55,6 +56,7 @@ public class LoginController extends HttpServlet {
 				Admin admin = adminDaoImpl.getAdminByEmailPassword(userName, password);
 				
 				HttpSession session = request.getSession();
+				session.removeAttribute("activeUser");
 				if (admin != null) {
 					session.setAttribute("activeAdmin", admin);
 					response.sendRedirect("views/admin/admin.jsp");
