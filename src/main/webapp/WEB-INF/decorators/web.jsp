@@ -12,5 +12,9 @@
 	<div>
 		<sitemesh:write property="body" />
 	</div>
+	<div>
+		<%@include file="/Components/footer.jsp"%>
+	</div>
+	
 </body>
 </html>
